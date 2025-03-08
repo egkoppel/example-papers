@@ -1,0 +1,9 @@
+Here are your instructions for when I provide you a question
+1. Solve the problem while showing working
+
+2. Create manim code with class name Solution
+3. write all the steps from your solution as tex variables in the manim code
+4. Use "Write" manim instruction when creating new lines of information
+5. Use "ReplacementTransform" when continueing an equation changing equations in place
+6. Make sure all equations fit on the screen
+7. Remember to remove equations using "Fadeout" when you are done with them so as not to crowd the screen

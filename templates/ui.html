@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <style>
 
         body {
@@ -36,6 +35,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
   <iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer" frameborder="0" style="width:50%;height:100vh"></iframe>
   <div style="display: inline-block; width:50%; float:right; padding-left: 5em; overflow-y: scroll; box-sizing: border-box; height:100vh;">
+    <form action="/" method="post" enctype="multipart/form-data">
+      <label for="file">Choose a file:</label>
+      <input type="file" name="file" id="file" required>
+      <br><br>
+      <input type="submit" value="Upload File">
+  </form>
     {% for question in questions %}
     <h2>Question: {{ question.question_number }}</h2>
     <h4>{{ question.question_content | replace("\n", "<br/>") }}</h4>

@@ -1,0 +1,319 @@
+
+========0========
+Natural Sciences Tripos, Part IA
+Mathematical Methods II, Course B
+Example Sheet 2
+Functions of More than One Variable
+Prof Natalia Berloﬀ
+Lent Term 2024
+This example sheet is for course B. Starred questions are intended as extras; do them if
+you have time, but try to complete the others ﬁrst. Please communicate any errors to
+N.G.Berloff@damtp.cam.ac.uk.
+Skills section
+Questions in this section are intended to give practice in routine calculations.
+S1. For each of the following functions, evaluate the partial derivatives∂f
+∂x,∂f
+∂y,∂2f
+∂x2 ,∂2f
+∂y2 ,
+and verify that ∂
+∂y
+(∂f
+∂x
+)
+= ∂
+∂x
+(∂f
+∂y
+)
+.
+(a) f = x3 −2x2y+ 3xy2 −4y3 (b) f = exp(−x2y2)
+(c) f = exp(−x/y) (d) f = sin(x+ y)
+(e) f = 1/(x2 + xy+ 2y2)
+S2. For each of the following functions, write out the diﬀerential expression d f =
+P(x,y) dx+Q(x,y) dyshowing the explicit form of the functionsP(x,y) and Q(x,y).
+(a) f = exp[−1/(x+ y)] (b) f = sinh x/sinh y
+(c) f = (x2 + y2)1/2 (d) f = arctan(y/x)
+(e) f = xy
+S3. For each of the functions in question S1, ﬁnd the locations of any stationary points.
+(You need not determine the type of the stationary points.)
+1
+========1========
+Standard questions
+Partial diﬀerentiation
+4. For the function
+f(x,y) = x(y2 + 2y−1) ,
+ﬁnd the components of the vector (∂f/∂x,∂f/∂y ), known as the gradient vector, at
+the points ( −1,0), (1,0), (−1,1) and (1 ,1). Make a sketch showing the directions
+of the gradient vector at these points.
+5. The period T of a simple pendulum of length ℓswinging in a gravitational ﬁeld g is
+given by
+T = 2π(ℓ/g)1/2 .
+Estimate the percentage error in a measurement of g resulting from
+(a) a 0 .1 % error in measuring ℓ,
+(b) a 0 .1 % error in measuring T.
+[Hint: take logs before diﬀerentiating! ]
+6. For f(x,y) = exp( −xy), ﬁnd ( ∂f/∂x)y and ( ∂f/∂y)x. Then ﬁnd ( ∂f/∂r)φ and
+(∂f/∂φ)r
+(i) by using the chain rule,
+(ii) by ﬁrst expressing f in terms of polar coordinates ( r,φ),
+and check that the two methods give the same results.
+7. If xyz + x3 + y4 + z5 = 0 (an implicit equation for any of the variables x,y,z in
+terms of the other two), ﬁnd
+(∂x
+∂y
+)
+z
+,
+(∂y
+∂z
+)
+x
+,
+(∂z
+∂x
+)
+y
+,
+and show that their product is −1.
+8. Van der Waals’s equation
+(
+p+ a
+V2
+)
+(V −b) = RT
+is an early (and in many ways a remarkably successful) attempt to represent the
+relation between the pressure p, volume V and temperature T of a real gas. ( R, a
+and b are constants for a given mass of the gas.) Find expressions for ( ∂p/∂V )T,
+(∂V/∂T )p and (∂T/∂p)V, and verify that their product is −1.
+9. f(x,y) is a scalar function of position on the ( x,y) plane. Position may also be
+speciﬁed by Cartesian coordinates u,v which are referred to axes rotated by an
+angle θ from the x and y axes. Show that
+∂2f
+∂x2 + ∂2f
+∂y2 = ∂2f
+∂u2 + ∂2f
+∂v2 ,
+i.e. the two-dimensional ∇2 operator is invariant under a rotation of axes.
+2
+========2========
+Exact diﬀerentials
+10. Determine whether the following diﬀerentials Pdx+ Qdy are exact. For those that
+are exact, ﬁnd a function f such that df = Pdx+ Qdy. For those that are not, try
+to ﬁnd an integrating factor µ(x) or µ(y). In each case, ﬁnd the general solution of
+the diﬀerential equation Pdx+ Qdy= 0.
+(a) ydx+ xdy
+(b) ydx+ x2 dy
+(c) ( x+ y) dx+ (x−y) dy
+(d) (cosh xcos y+ coshycos x) dx−(sinh xsin y−sinh ysin x) dy
+(e) (cos x−sin x) dx+ (sinx+ cosx) dy
+(f) ( xdy−ydx)/(x2 + y2)
+(You may wish to discuss with your supervisor why case (f) presents diﬃculties.)
+11. The enthalpy of a gas is deﬁned by H = U+pV, where U satisﬁes dU = TdS−pdV.
+Determine a relationship between the diﬀerentials of H, S and p. Hence show that
+(∂V
+∂S
+)
+p
+=
+(∂T
+∂p
+)
+S
+.
+By regarding U as a function of p and V and considering two expressions for
+∂2U/∂p∂V , show that
+(∂S
+∂V
+)
+p
+(∂T
+∂p
+)
+V
+−
+(∂S
+∂p
+)
+V
+(∂T
+∂V
+)
+p
+= 1 .
+12. Given that
+dU = TdS−pdV ,
+ﬁnd a function G such that
+dG= V dp−SdT .
+Hence show that (∂S
+∂p
+)
+T
+= −
+(∂V
+∂T
+)
+p
+.
+3
+========3========
+13. The pressure p can be considered as a function of the variables V and T or as a
+function of the variables V and S.
+(i) Find an expression for
+(∂p
+∂V
+)
+T
+−
+(∂p
+∂V
+)
+S
+in terms of
+(∂S
+∂V
+)
+T
+and
+(∂S
+∂p
+)
+V
+.
+(ii) Hence, using TdS = dU + pdV, show that
+(∂ln p
+∂ln V
+)
+T
+−
+(∂ln p
+∂ln V
+)
+S
+=
+(∂(pV)
+∂T
+)
+V
+[p−1(∂U/∂V )T + 1
+(∂U/∂T)V
+]
+. (⋆)
+[
+Hint:
+(∂ln p
+∂ln V
+)
+T = V
+p
+(∂p
+∂V
+)
+T .
+]
+(iii) For one mole of an ideal gas, you may assume that U = CvT, pV = RT, and
+pVγ depends only on S, where Cv, R and γ are constants.
+Use equation (⋆) to ﬁnd an expression for γ in terms of Cv and R.
+(iv) What is the value of γ for a monatomic gas for which Cv = 3
+2 R?
+Stationary values
+14. The height h of each point (x,y) of an area of land is given by
+h(x,y) = a(x+ y)
+x2 + y2 + a2 ,
+where a is a positive constant. Find the locations and heights of the highest and
+lowest points of the terrain, and also those along the x and y axes. Sketch a map
+of the region by showing contours of constant h in the (x,y) plane.
+15. (i) Find the stationary points of the function
+z = (x2 −y2) e−x2−y2
+.
+(ii) Find the contours on which z = 0 and examine the behaviour of z on the x
+and y axes. Hence, or otherwise, determine the character of the stationary
+points. Sketch the contours.
+16. For each of the functions
+(a) ( x2 + y2 + 1)−1
+(b) sin xsin y (0 <x<π, 0 <y <π)
+(c) ( xy−y) exp(2x−x2 −y2) [ more diﬃcult ]
+ﬁnd the stationary points and determine their character.
+4
+========4========
+Conditional stationary values
+17. Find, using Lagrange multipliers, the stationary values subject to the constraint
+x2 + y2 = 1 of
+(a)
+xy2
+(b)
+e−xy
+and the points at which they occur. Check your answers by applying the constraint
+using the substitution x= cos θ, y= sin θ.
+18. Show that the largest volume V of any cuboid inscribed inside the ellipsoid
+x2
+a2 + y2
+b2 + z2
+c2 = 1
+is 8abc/
+√
+27.
+19. The area Aof a triangle with sidesa, band cis given byA=
+√
+s(s−a)(s−b)(s−c),
+where s = 1
+2 (a+ b+ c). Show, using Lagrange multipliers, that of all triangles of
+given perimeter 2s, the triangle of largest area is equilateral.
+Find (in terms of the perimeter) the largest possible area of a right-angled triangle
+of given perimeter.
+20*. Show that the maximum value, r, of (x2 + y2 + z2)1/2, subject to the conditions
+x2
+a2 + y2
+b2 + z2
+c2 = 1 , ℓx + my+ nz = 0 ,
+satisﬁes the equation
+ℓ2a2
+a2 −r2 + m2b2
+b2 −r2 + n2c2
+c2 −r2 = 0 .
+Interpret the problem geometrically and state the geometrical signiﬁcance of one of
+the Lagrange multipliers.
+5
+========5========
+Boltzmann distribution
+21. Let
+W =
+N∏
+s=1
+(gs −1 + ns)!
+(gs −1)! ns! (†)
+and let the numbers ns be subject to the conditions
+N∑
+s=1
+ns = n,
+N∑
+s=1
+nsEs = E.
+If both gs and ns are assumed to be large, so that Stirling’s approximation ln n! ≈
+nln n−nmay be applied, show that ln W, considered as a function of the numbers
+ns, is greatest when
+ns = gs
+[
+eβ(Es−µ) −1
+]−1
+, (‡)
+where β and −βµ are Lagrange multipliers.
+Equation (‡) is in fact the Bose–Einstein distribution and follows from the formula
+(†) which takes into account the eﬀects of quantum indistinguishability for bosons.
+However you do not need to know any quantum mechanics to do this question!
+For fermions the formula for W turns out to be
+W =
+N∏
+s=1
+gs!
+ns! (gs −ns)! .
+Find the value of ns for which this expression for W is maximized subject to the
+same conditions. This is the Fermi–Dirac distribution.
+22*. A ﬁnite container is ﬁlled with a monatomic ideal gas of constant internal energy
+(total kinetic energy). It can be shown that the degeneracy of the kinetic energy
+states is proportional to E1/2.
+The number of particles n of kinetic energy E is therefore distributed as
+n∝E1/2 e−βE−α,
+where αand β are constants. Determine the most probable value and the expected
+value of the kinetic energy of a molecule.
+6

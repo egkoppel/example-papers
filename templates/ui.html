@@ -41,9 +41,19 @@
       <br><br>
       <input type="submit" value="Upload File">
   </form>
-    {% for question in questions %}
-    <h2>Question: {{ question.question_number }}</h2>
+
+    {% for question in questions %} 
+
+    <h2>Question{{loop.index}}: {{ question.question_number }}</h2>
     <h4>{{ question.question_content | replace("\n", "<br/>") }}</h4>
+    <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string + '.mp4') }}")>
+      Show solution
+    </p>
+
+  <!--<p class="page-link" onclick=createVideoElement("{{url_for('static', filename='soppypoffy.mp4')}}")>
+      after start???
+  </p>-->
+
     <ul>
       {% for topic in question.topics %}
       <li>{{topic}}</li>
@@ -93,6 +103,56 @@ function scrollToPDFPage(pageNumber) {
         }
     }
     tryScroll();
+}
+</script>
+<script>
+function createVideoElement(videoUrl) {
+    // Create video element
+    let video = document.createElement('video');
+    video.width = 320;
+    video.height = 240;
+    video.controls = true;
+
+    // Create source element
+    let source = document.createElement('source');
+    source.src = videoUrl;
+    source.type = 'video/mp4';
+
+    // Append source to video
+    video.appendChild(source);
+
+    // Append video to the body or another container
+    document.body.appendChild(video);
+}
+</script>
+<script>
+function createPopoutVideo(videoUrl) {
+  // Calculate center position
+  let width = 400;
+  let height = 300;
+  let left = (window.screen.width - width) / 2;
+  let top = (window.screen.height - height) / 2;
+
+  let popout = window.open("", "VideoPlayer", `width=${width},height=${height},top=${top},left=${left}`);
+  if (!popout) {
+      alert("Pop-up blocked! Please allow pop-ups for this site.");
+      return;
+  }
+  
+  // Write video element into the new window
+  popout.document.write(`
+      <html>
+      <head>
+          <title>Video Player</title>
+      </head>
+      <body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background-color:#000;">
+          <video width="320" height="240" controls autoplay>
+              <source src="${videoUrl}" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </body>
+      </html>
+  `);
 }
 </script>
 </body>

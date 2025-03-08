@@ -10,7 +10,7 @@ def extract_text_from_pdf(pdf_path):
         for page_number,page in enumerate(reader.pages):
             page_text = page.extract_text()
             if page_text:  # Check if text is found on the page
-                text += f"\n========{page_number}======\n" + page_text
+                text += f"\n========{page_number}========\n" + page_text
         return text
 
 # Example usage:

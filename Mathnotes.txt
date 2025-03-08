@@ -1,11 +1,11 @@
 
-========0======
+========0========
 Natural Sciences Tripos, Part IA
 Lent Term 2024
 Mathematical Methods II, Course B
 Prof Natalia Berloﬀ
 Section 2
-========1======
+========1========
 Natural Sciences Tripos, Part IA · Lent Term 2023
 Mathematical Methods II, Course B · Prof Natalia Berloﬀ
 2 FUNCTIONS OF MORE THAN ONE VARIABLE
@@ -21,7 +21,7 @@ than one variable. How do we deﬁne the temperature gradient when the temperatu
 three spatial coordinates? How do we ﬁnd the points of minimum and maximum temperature?
 These and related questions are answered in this section of the course.
 1
-========2======
+========2========
 2.2 Partial diﬀerentiation
 2.2.1 Ordinary derivative
 A function f ( x) of one variable x, where x and f are both real numbers, can be visualized as the curve
@@ -46,7 +46,7 @@ h
 Thus d f/ d x is the limiting value of the ratio δf/δx of small increments in the function and its
 argument. The function is said to be diﬀerentiable at the point x if this limit exists.
 2
-========3======
+========3========
 d f/ d x is the local rate of change of the function f ( x) with the variable x. Geometrically, it is the
 local gradient of the curve y = f ( x), i.e. the gradient of the straight line that is tangent to the curve
 at the point x. The derivative provides the best linear approximation to the function near the point
@@ -58,7 +58,7 @@ Another way to visualize the function is to plot a selection of contour lines f 
 ( x,y ) plane. This is equivalent to ﬁnding the intersection of the surface z = f ( x,y ) with a selection
 of horizontal planes z = constant. (Usually, equally spaced contour values are used.)
 3
-========4======
+========4========
 -2.5 -2 -1.5 -1 -0.5 0 0.5 1 1.5 2 2.5
 -2.5
 -2
@@ -101,7 +101,7 @@ variable only. The ordinary derivative of this function is exactly the same as t
 ∂f/∂x is the local gradient of the surface z = f ( x,y ) when travelling in the x-direction, while ∂f/∂y
 is the gradient when travelling in the y-direction. These are the gradients of straight lines that are
 4
-========5======
+========5========
 tangent to the surface and perpendicular to the y- and x-axes, respectively. Together, these two
 gradients deﬁne the orientation of the tangent plane , which is the best linear approximation to the
 surface near the point considered.
@@ -132,7 +132,7 @@ y
 states explicitly which variable (in this case y) is held constant while carrying out the derivative. This
 notation is particularly useful when changing independent variables, e.g. from ( x,y ) to ( x,v ), where v
 5
-========6======
+========6========
 can be expressed as a function of x and y. In such cases there is a very important distinction between(
 ∂f
 ∂x
@@ -185,7 +185,7 @@ is the gradient operator , a vector diﬀerential operator. It is pronounced ‘
 the diﬀerential operator d
 d x , it acts on whatever is written to the right of it.
 6
-========7======
+========7========
 2.2.3 Second derivatives
 Second derivatives can be deﬁned by repeated partial diﬀerentiation:
 ∂2 f
@@ -230,7 +230,7 @@ While the ﬁrst two of these just mean the second derivative of f with respect 
 the other is held constant, the last two mean something diﬀerent and are known as mixed partial
 derivatives .
 7
-========8======
+========8========
 Example :
 f ( x,y ) = e −x2 −y2
 ∂f
@@ -288,7 +288,7 @@ x + y2
 2 y
 ( x + y2 ) 2
 8
-========9======
+========9========
 ∂2 f
 ∂x 2 = fxx =
 ∂
@@ -365,7 +365,7 @@ satisﬁed). We are therefore free to use any of the following notation:
 ∂y∂x
 = fxy = fyx .
 9
-========10======
+========10========
 To see where this property comes from, let
 a = f ( x,y ) , b = f ( x + h,y ) , c = f ( x,y + k) , d = f ( x + h,y + k) .
 From the deﬁnition,
@@ -415,7 +415,7 @@ hk
 as both h and k tend to zero. For suﬃciently smooth functions f it can be shown that these two
 double limits produce the same answer.
 10
-========11======
+========11========
 2.2.4 Generalization
 The deﬁnitions and properties of partial derivatives generalize to functions of any number of variables,
 such as f ( x1 ,x 2 ,...,x n ). Thus
@@ -453,7 +453,7 @@ for any i and j, while
 = ··· ,
 etc. The partial derivative operators ∂/∂x i and ∂/∂x j commute for any i and j.
 11
-========12======
+========12========
 2.2.5 Integration
 To undo a partial derivative with respect to x at constant y, we integrate with respect to x at constant
 y. For example, if f ( x,y ) is known to satisfy
@@ -473,7 +473,7 @@ where h( x) is a function of x. Comparing the two expressions for f , we see in 
 g( y) = y2 + h( x) .
 This is possible only if h( x) = c = constant, in which case g( y) = y2 + c. Thus f = x2 y2 + y2 + c.
 12
-========13======
+========13========
 2.2.6 Diﬀerentials
 For a diﬀerentiable function of one variable we have a Taylor expansion
 f ( x + h) ≈ f ( x) + f ′( x) h +
@@ -491,7 +491,7 @@ f ( x + h) − f ( x) ≈ f ′( x) h, i.e. δf ≈ f ′( x) δx.
 Geometrically, this corresponds to approximating the curve y = f ( x) by the tangent line that touches
 the curve at the point being considered.
 13
-========14======
+========14========
 Provided that f ( x) is indeed diﬀerentiable, this approximation is increasingly good as h tends to zero,
 in the sense that
 lim
@@ -510,7 +510,7 @@ vanishingly small.
 Mathematicians have since found more sophisticated ways to formalize this type of statement, but we
 will not investigate them here.
 14
-========15======
+========15========
 Now consider a function f ( x,y ) of two variables. By analogy with the one-variable case, we expect a
 local linear approximation to f in the neighbourhood of any point, i.e.
 f ( x + h,y + k) ≈ f ( x,y ) + αh + βk,
@@ -545,7 +545,7 @@ h
 ∂x
 .
 15
-========16======
+========16========
 Similarly,
 β =
 ∂f
@@ -593,7 +593,7 @@ d t
 ,
 if x and y are both functions of a parameter t. It is also useful in estimating small ﬁnite changes.
 16
-========17======
+========17========
 Example . The Clausius–Clapeyron equation
 P = P0 exp
 [
@@ -671,7 +671,7 @@ d H
 H
 .
 17
-========18======
+========18========
 This expresses the relation between the fractional errors in P , T and H when those errors are small.
 ( Exercise : It can be obtained more easily by ﬁnding the partial derivatives of ln P . Note that
 d P/P = d ln P .) Thus the fractional error in P is approximately
@@ -710,7 +710,7 @@ where the remainder term is such that
 R
 h2 + k2 → 0 as h → 0 and k → 0 .
 18
-========19======
+========19========
 Another way to write this is
 f ( x,y ) = f ( x0 ,y 0 ) + fx( x0 ,y 0 )( x − x0 ) + fy ( x0 ,y 0 )( y − y0 )
 +
@@ -723,7 +723,7 @@ fxx ( x0 ,y 0 )( x − x0 ) 2 + fxy ( x0 ,y 0 )( x − x0 )( y − y0 )
 fyy ( x0 ,y 0 )( y − y0 ) 2 + R.
 These series can be extended to higher order if the function is diﬀerentiable more than twice.
 19
-========20======
+========20========
 2.2.8 Chain rule
 Suppose that f is a function of two variables x and y, and that, in turn, x and y are each functions
 of two variables u and v. This situation occurs, for example, when we change to a diﬀerent system of
@@ -740,7 +740,7 @@ quantity when expressed as a function of diﬀerent arguments. One reason for th
 of symbols is dictated by scientiﬁc conventions. We will call the temperature T , for example, whether
 it is expressed as a function of Cartesian coordinates ( x,y ) or polar coordinates ( r,φ ).
 20
-========21======
+========21========
 We will therefore write
 f ( x,y ) = f ( x( u,v ) ,y ( u,v )) = f ( u,v )
 although this is (like many things) a conventional abuse of mathematical notation . When doing this
@@ -836,7 +836,7 @@ u
 ]
 d v.
 21
-========22======
+========22========
 Since we also expect
 d f =
 (
@@ -954,7 +954,7 @@ y
 x
 ,
 22
-========23======
+========23========
 (
 ∂f
 ∂φ
@@ -1089,7 +1089,7 @@ x
 x
 .
 23
-========24======
+========24========
 The ﬁrst equation demonstrates that ( ∂f/∂x ) v is, in general, not equal to ( ∂f/∂x ) y . (This makes
 sense because the constraint v = constant is diﬀerent from the constraint y = constant.) The sec-
 ond equation corresponds to the chain rule for ordinary derivatives; here x is held constant in each
@@ -1170,7 +1170,7 @@ d x +
 x
 d y.
 24
-========25======
+========25========
 Example . If the height of a hill is
 h( x,y ) =
 1
@@ -1241,7 +1241,7 @@ d t
 Exercise : check that you get the same answer by substituting x( t) and y( t) into h( x,y ) to ﬁnd h( t)
 and then diﬀerentiating with respect to t.
 25
-========26======
+========26========
 2.2.9 Reciprocity and cyclic relations
 If z is a function of two variables x and y, then equally x can be regarded as a function of y and z, or
 y can be regarded as a function of z and x.
@@ -1313,7 +1313,7 @@ z
 ]
 d z
 26
-========27======
+========27========
 and compare it with the ﬁrst. Since d y and d z are independent, the coeﬃcients must agree:
 (
 ∂x
@@ -1411,7 +1411,7 @@ y
 x
 .
 27
-========28======
+========28========
 2.2.10 Exact diﬀerentials
 The general expression
 ω = P ( x,y ) d x + Q ( x,y ) d y
@@ -1448,7 +1448,7 @@ Now the symmetry of mixed partial derivatives
 ∂y
 )
 28
-========29======
+========29========
 implies
 ∂P
 ∂y
@@ -1479,7 +1479,7 @@ In this case P = y and Q = x, so ∂P/∂y = 1 = ∂Q/∂x . The answer is yes .
 Integrating the ﬁrst equation with respect to x and the second equation with respect to y, we ﬁnd
 f = xy + g( y) , f = xy + h( x) .
 29
-========30======
+========30========
 These equations are compatible only if g( y) = h( x) = constant, in which case f = xy + constant. We
 easily check that d f = y d x + x d y as required.
 This idea can be applied to ﬁrst-order ordinary diﬀerential equations. Another way of writing the
@@ -1515,7 +1515,7 @@ c
 x
 .
 30
-========31======
+========31========
 2.2.11 Integrating factors for diﬀerential forms
 The function µ( x,y ) is said to be an integrating factor for the diﬀerential form ω = P ( x,y ) d x +
 Q ( x,y ) d y if the diﬀerential form
@@ -1558,7 +1558,7 @@ Q
 Given a diﬀerential form P d x + Q d y, if the right-hand side of this equation vanishes, we have an
 exact diﬀerential. If the right-hand side is a function of x only, then the equation is self-consistent
 31
-========32======
+========32========
 and can be integrated to ﬁnd the integrating factor µ( x). If the right-hand side depends on both x
 and y, then there is a contradiction and no integrating factor of the form µ( x) exists.
 Similarly, an integrating factor of the form µ( y) satisﬁes
@@ -1610,7 +1610,7 @@ ln µ = −2 ln x + constant
 c
 x2 .
 32
-========33======
+========33========
 The simplest choice is µ = 1 /x 2 . Indeed,
 µω =
 y
@@ -1655,7 +1655,7 @@ y d x − x d y = 0 ,
 we could use either version to deduce that the general solution is y = cx , where c is an arbitrary
 constant.
 33
-========34======
+========34========
 2.2.12 Maxwell’s relations
 Partial derivatives and diﬀerentials are frequently encountered in thermodynamics, and the classic
 application is to gases.
@@ -1675,7 +1675,7 @@ where U is the internal energy . This diﬀerential relation is a statement of t
 dynamics. In an inﬁnitesimal process, the increase in internal energy is equal to the amount of heat
 added to the gas (by adding entropy) plus the amount of work done on it (by compressing it).
 34
-========35======
+========35========
 Regarding U as a function of ( S,V ), we have
 d U =
 (
@@ -1729,7 +1729,7 @@ d U = T d S − p d V,
 it makes sense to consider the quantity
 F = U − TS,
 35
-========36======
+========36========
 so that
 d F = d U − T d S − S d T
 = −S d T − p d V.
@@ -1783,7 +1783,7 @@ The quantity F is called the Helmholtz free energy or Helmholtz function (some a
 symbol A). Note, however, that it was just an intermediate step in this calculation. The Maxwell
 relation (2) is a purely mathematical consequence of the fundamental thermodynamic relation ( ⋆).
 36
-========37======
+========37========
 Further Maxwell relations follow from the Legendre transformations H = U + pV ( enthalpy ) and
 G = H − TS ( Gibbs free energy or Gibbs function ), which imply
 d H = T d S + V d p ⇒
@@ -1891,7 +1891,7 @@ V
 .
 Exercise : Choose a diﬀerent pair of Maxwell relations and derive one from the other in a similar way.
 37
-========38======
+========38========
 A diﬀerent type of relation can also be derived from equation ( ⋆). By considering U as a function of
 the two thermal variables ( T,S ) we are led to write
 d U = T d S − p d V
@@ -2005,7 +2005,7 @@ T
 S
 = 1 .
 38
-========39======
+========39========
 2.3 Stationary points
 2.3.1 Functions of one variable
 Consider a function f ( x) of one variable x, where x and f are both real numbers. Near any point
@@ -2025,7 +2025,7 @@ maximum at x = x0 .
 10
 y
 39
-========40======
+========40========
 If f ′( x0 ) = 0 then f ( x) is said to have a stationary point at x = x0 , because then it does not vary to
 ﬁrst order in x − x0 . Provided that f ′′( x0 ) ̸= 0, the variation of f ( x) near x = x0 is then dominated
 by the quadratic term, which has the same sign on either side of x = x0 . In this case f ( x) has
@@ -2054,7 +2054,7 @@ local minimum
 local maximum
 x3x2x1
 40
-========41======
+========41========
 If both f ′( x0 ) = 0 and f ′′( x0 ) = 0 then we would need to inspect higher-order terms in the Taylor
 expansion to determine whether the function has a minimum, maximum or neither. For example, if
 f ′( x0 ) = f ′′( x0 ) = 0 and f ′′′( x0 ) ̸= 0, then
@@ -2065,7 +2065,7 @@ which indicates neither a minimum nor a maximum but rather a stationary point of
 of the curvature of the graph y = f ( x) is the same as the sign of f ′′( x). In fact the curvature is
 f ′′(1 + f ′2 ) −3 /2 .)
 41
-========42======
+========42========
 2.3.2 Functions of two or more variables
 Consider now a diﬀerentiable function f ( x,y ) of two variables. Near any point ( x0 ,y 0 ) we have
 f ( x,y ) ≈ f ( x0 ,y 0 ) + fx( x0 ,y 0 )( x − x0 ) + fy ( x0 ,y 0 )( y − y0 ) .
@@ -2090,7 +2090,7 @@ For an inﬁnitesimal displacement d x = (d x, d y) we can write
 d f = ( ∇ f ) ·d x .
 At a stationary point where ∇ f = 0 , d f = 0 for all d x .
 42
-========43======
+========43========
 While a stationary point of a function of one variable is usually a minimum or a maximum (exceptions
 occurring only when the second derivative also vanishes), a stationary point of a function of two or
 more variable is usually a minimum, a maximum or a saddle point . Near a saddle point, the function
@@ -2099,7 +2099,7 @@ vary).
 (The term extremum refers to either a minimum or a maximum, but not a saddle point.)
 Pictures and contour diagrams of an idealised minimum, maximum and saddle point.
 43
-========44======
+========44========
 Applying a Taylor expansion (see Section 2.2.7) to a function that has a stationary point at ( x0 ,y 0 ),
 we obtain the approximation
 f ( x,y ) ≈ f ( x0 ,y 0 ) + 1
@@ -2118,7 +2118,7 @@ Simple examples are:
 • (c) x2 − y2 , which has a saddle point at (0 , 0)
 • (d) xy , which has a saddle point at (0 , 0)
 44
-========45======
+========45========
 More generally, we can complete the square in the form
 Q ( x,y ) =
 1
@@ -2149,7 +2149,7 @@ have a minimum.
 have a maximum.
 • If AC <B 2 then Q ( x,y ) can be either positive or negative and we have a saddle point.
 45
-========46======
+========46========
 Although this analysis fails when A = 0, similar conclusions can be drawn from the alternative way
 of completing the square,
 Q ( x,y ) =
@@ -2170,7 +2170,7 @@ xy .
 In special intermediate cases, higher-order terms in the Taylor expansion are needed to determine the
 nature of the stationary point. We will not discuss such cases.
 46
-========47======
+========47========
 For later reference (this will make more sense next term), the Hessian matrix is deﬁned as the matrix
 of second derivatives,
 H =
@@ -2199,7 +2199,7 @@ x
 y
 .
 47
-========48======
+========48========
 To ﬁnd the stationary points of A, set the partial derivatives to zero:
 ∂A
 ∂x
@@ -2237,7 +2237,7 @@ xy with Axx > 0 and Ayy > 0, so A has a local minimum as expected.
 (In the next section we will see an alternative method for minimizing A subject to the constraint
 V = constant.)
 48
-========49======
+========49========
 Example . Find and classify the stationary points of f ( x,y ) = x3 −4 x2 +2 xy −y2 . Sketch the contours
 of f .
 For stationary points,
@@ -2258,7 +2258,7 @@ A way to discover the orientation of the saddle point is to note that the Taylor
 order near (2 , 2) is
 f ≈ c + 2 δx 2 + 2 δxδy − δy 2 ,
 49
-========50======
+========50========
 where c = f (2 , 2) = −4, δx = x − 2 and δy = y − 2. So the contour lines that pass through the saddle
 point are given by f = c, i.e.
 2 δx 2 + 2 δxδy − δy 2 ≈ 0
@@ -2348,7 +2348,7 @@ f=0
 S P
 Max
 50
-========51======
+========51========
 2.4 Conditional stationary values
 2.4.1 Two independent variables, one constraint
 We have seen that the function f ( x,y ) is stationary when ∇ f = 0 , which means that f does not
@@ -2374,7 +2374,7 @@ vanishes at θ = π/ 4, 3 π/ 4, 7 π/ 4 and 11 π/ 4. The ﬁrst and third solu
 f = 1 /2 as above.
 Either of these methods is reasonable, but they both rely on the ability to solve the constraint equation.
 51
-========52======
+========52========
 In more complicated cases this may not be practical, or it may lead to unwieldy algebra. A more
 sophisticated approach is the method of Lagrange multipliers .
 Method 3 . Suppose the maximum of f on the curve g = 0 is at ( x0 ,y 0 ). Consider the variation of
@@ -2397,7 +2397,7 @@ gx
 least one will work.) f is therefore stationary along the curve when
 fxgy − fy gx = 0 ,
 52
-========53======
+========53========
 or, equivalently,
 fx
 gx
@@ -2426,7 +2426,7 @@ y = x and we ﬁnd x = y = ±1 /
 2,
 so f = −1 /2. In this way we ﬁnd all the conditional stationary points; the ﬁrst two are the maxima.
 53
-========54======
+========54========
 2.4.2 Lagrange multipliers and Lagrangian function
 To ﬁnd the stationary points of f ( x,y ) subject to the constraint g( x,y ) = 0, solve the simultaneous
 equations
@@ -2445,7 +2445,7 @@ constraint g = c, where c is a non-zero constant. In that case we should solve t
 Lx = Ly = 0 and g = c (not Lλ = 0).
 • Sometimes L = f + λg is used instead of L = f − λg . The result is the same.
 54
-========55======
+========55========
 2.4.3 Geometrical viewpoint
 Consider a path going over a hill, but not visiting the summit. The highest point on the path is where
 the contour lines are parallel to the path. At the point the direction of steepest ascent is perpendicular
@@ -2464,7 +2464,7 @@ f(x,y)=const
 grad f
 At each point, the vector ∇ f is normal to the contour line f = constant passing through that point.
 55
-========56======
+========56========
 This is because
 d f = ( ∇ f ) ·d x ,
 which means that the direction in which f does not change (d f = 0) corresponds to a displacement
@@ -2475,7 +2475,7 @@ conditional stationary point, we require that d f = ( ∇ f ) ·d x = 0 not for 
 displacements such that ( ∇ g) ·d x = 0.
 Therefore we require that ∇ f is parallel to ∇ g, i.e. ∇ f = λ∇ g.
 56
-========57======
+========57========
 2.4.4 More than two independent variables, one constraint
 A similar method can be applied to functions of more than two variables, as in the following example.
 Note that the constraint equation g = 0 conﬁnes us to a surface rather than a curve.
@@ -2500,7 +2500,7 @@ Exercise : Verify this result by parametrizing the unit sphere using spherical p
 point rather than a minimum or a maximum. It is not straightforward to determine the nature of the
 conditional stationary point in general using the method of Lagrange multipliers.)
 57
-========58======
+========58========
 2.4.5 More than one constraint
 Consider the problem of two constraints in three dimensions. We seek the stationary values of f ( x,y,z )
 subject to the constraints g( x,y,z ) = 0 and h( x,y,z ) = 0. Each equation g = 0 and h = 0 deﬁnes a
@@ -2514,7 +2514,7 @@ is satisﬁed when
 ∇ f = λ∇ g + µ∇ h
 for some numbers λ and µ to be determined.
 58
-========59======
+========59========
 There is therefore one Lagrange multiplier for each constraint.
 Equivalently, we can seek unconditional stationary values of the Lagrangian function
 L( x,y,z,λ,µ ) = f ( x,y,z ) − λg ( x,y,z ) − µh ( x,y,z ) .
@@ -2539,7 +2539,7 @@ f =
 2 λ
 .
 59
-========60======
+========60========
 The ﬁfth equation gives
 l(1 − µl ) + m (1 − µm ) + n(1 − µn ) = 0
 µ =
@@ -2571,7 +2571,7 @@ l2 + m 2 + n2
 .
 The maximum value is obtained by taking the + sign.
 60
-========61======
+========61========
 2.4.6 The Boltzmann distribution
 This classic example of maximization subject to constraints comes from statistical mechanics.
 Suppose we have a system consisting of a very large number of particles. Each particle occupies one
@@ -2593,7 +2593,7 @@ i=1
 N iEi.
 The distribution of particles among states is described by the numbers ( N 1 ,N 2 ,...,N n ). A given
 61
-========62======
+========62========
 distribution ( N 1 ,N 2 ,...,N n ) can be achieved in many diﬀerent ways. The number of ways is in fact
 W =
 N !
@@ -2619,7 +2619,7 @@ ln( N i!) .
 (The entropy is S = k ln W , where k is Boltzmann’s constant. Therefore we are ﬁnding the distribution
 of maximum entropy.)
 62
-========63======
+========63========
 If the system is isolated then we should maximize ln W subject to the constraints N = ˆN = constant
 and E = ˆE = constant, because the total number of particles and the total energy are ﬁxed.
 We therefore seek the stationary points of the Lagrangian function
@@ -2657,7 +2657,7 @@ ln( x!) ≈ ln x +
 2 x
 ≈ ln x for x ≫ 1 .
 63
-========64======
+========64========
 Applying this approximation to N ! and N i! for N ≫ 1 and N i ≫ 1, we ﬁnd
 ∂L
 ∂N i
@@ -2685,7 +2685,7 @@ j=1 e −βE j
 The value of β (and therefore the temperature of the system) is determined by the second constraint,
 which is the total energy of the system.
 64
-========65======
+========65========
 Note that the Boltzmann distribution does not predict integer values of N i. That is because we have
 treated the occupation numbers N i at several stages as large real numbers rather than integers.
 The Boltzmann distribution is often discussed with degenerate states . This situation occurs when we

@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: -webkit-linear-gradient(#eee, #dcfffa);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .page-link {
+            color: #00e;
+            text-decoration: underline;
+            cursor: pointer;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .page-link:hover {
+            background: rgba(0, 104, 138, 0.1);
+        }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Example paper fixer</title>
 </head>
 <body style="margin: 0">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
   <iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer" frameborder="0" style="width:50%;height:100vh"></iframe>
   <div style="display: inline-block; width:50%; float:right; padding-left: 5em; overflow-y: scroll; box-sizing: border-box; height:100vh;">
     {% for question in questions %}
-    <h2>{{ question.question_number }}</h2>
-    <p>{{ question.question_content | replace("\n", "<br/>") }}</p>
+    <h2>Question: {{ question.question_number }}</h2>
+    <h4>{{ question.question_content | replace("\n", "<br/>") }}</h4>
     <ul>
       {% for topic in question.topics %}
       <li>{{topic}}</li>
       {% endfor %}
     </ul>
-    <ul>
+    <ul style="list-style-type:circle;">
       {% for pageset in question.pages %}
       <li>
-       <u><p style="color: blue; " onclick="document.getElementById(&quot;pdf-js-viewer&quot;).contentWindow.PDFViewerApplication.page={{ pageset.start_page }}">Pages {{ pageset.start_page }}-{{ pageset.end_page }}</p></u>
+       <u>
+        <p class="page-link" onclick="scrollToPDFPage({{ pageset.start_page }})">
+          Pages {{ pageset.start_page }}-{{ pageset.end_page }}
+      </p></u>
       </li>
       {% endfor %}
     </ul>
@@ -36,7 +67,28 @@
     };
   </script>
   <script type="text/javascript" id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> 
   </script>
+ <script>
+function scrollToPDFPage(pageNumber) {
+    let viewer = document.getElementById("pdf-js-viewer").contentWindow;
+    function tryScroll() {
+        if (viewer.PDFViewerApplication && viewer.PDFViewerApplication.pdfViewer) {
+            let pdfViewer = viewer.PDFViewerApplication.pdfViewer;
+            let page = pdfViewer._pages[pageNumber]; 
+
+            if (page) {
+                pdfViewer.container.scrollTo({
+                    top: page.div.offsetTop +2, 
+                    behavior: "smooth"
+                });
+            }
+        } else {
+            setTimeout(tryScroll, 500);
+        }
+    }
+    tryScroll();
+}
+</script>
 </body>
 </html>

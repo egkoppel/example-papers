@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example paper fixer</title>
+</head>
+<body style="margin: 0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
+  <iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer" frameborder="0" style="width:50%;height:100vh"></iframe>
+  <div style="display: inline-block; width:50%; float:right; padding-left: 5em; overflow-y: scroll; box-sizing: border-box; height:100vh;">
+    {% for question in questions %}
+    <h2>{{ question.question_number }}</h2>
+    <p>{{ question.question_content | replace("\n", "<br/>") }}</p>
+    <ul>
+      {% for topic in question.topics %}
+      <li>{{topic}}</li>
+      {% endfor %}
+    </ul>
+    <ul>
+      {% for pageset in question.pages %}
+      <li>
+       <u><p style="color: blue; " onclick="document.getElementById(&quot;pdf-js-viewer&quot;).contentWindow.PDFViewerApplication.page={{ pageset.start_page }}">Pages {{ pageset.start_page }}-{{ pageset.end_page }}</p></u>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</body>
+</html>

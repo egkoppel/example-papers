@@ -32,3 +32,11 @@ def generate():
             CreateVideo(question_list.questions[0].question_content)
         yield render_template("ui.html", questions=question_list.questions)
     return Response(generate())
+
+@app.route("/video", methods=["POST"])
+def video():
+    question = request.get_json()
+    text = question["text"]
+    num = question["num"]
+    CreateVideo(text, int(num))
+    return ""

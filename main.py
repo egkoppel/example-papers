@@ -14,8 +14,3 @@ def extract_text_from_pdf(pdf_path):
         return text
 
 # Example usage:
-pdf_file_path = 'L24fullnotesp2.pdf'  # Replace with your PDF file path
-pdf_text = extract_text_from_pdf(pdf_file_path)
-with open("Mathnotes.txt", "w") as f:
-    f.write(pdf_text)
-print(pdf_text)

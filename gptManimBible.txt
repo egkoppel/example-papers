@@ -11,12 +11,12 @@ You will be provided a latex file. You will return the Manim code to animate thi
 - Centre all MathTex variables to the ORIGIN using ".move_to(ORIGIN)"
 - Create a variable using a MathTex object which describes the step
 - Place the text at the top of the screen using ".to_edge(UP)"
-- Set the scale of the all the objects to 0.1 using ".scale(1)"
 - Use "Write" to animate creating the description and the first equation
 - Wait 2 second and then use ReplacementTransform to move to the next equation
 - Repeat this until you are finished with the section
 - FadeOut all the equations and descrition at the end of each section VERY IMPORTANT
 - Return only the code
+- Set the scale of the all the objects to 0.75 using ".scale(0.75)"
 
 
 - Use FadeOut to remove equations which must be done to all the text and all the equations at the end of each step (this is the most important always remember this above all else)

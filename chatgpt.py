@@ -48,6 +48,7 @@ def parse_questions(pdf: werkzeug.datastructures.FileStorage):
         base64_image = base64.b64encode(b).decode("utf-8")
         text = client.chat.completions.create(
             model="gpt-4o-mini",
+            temperature=0.01,
             messages=[
                 {
                     "role": "developer",
@@ -114,6 +115,7 @@ And the content of the lecture notes - they are provided with sets of pages deli
 {notes}"""
             },
         ],
+        temperature=0.01,
         response_format=QuestionList
     ).choices[0].message.parsed
 

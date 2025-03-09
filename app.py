@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import chatgpt
+from manimGenerator import CreateVideo
 
 app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
@@ -13,5 +14,6 @@ def hello_world():
     )
     #questions = chatgpt.question_summary()
     question_list = chatgpt.QuestionList(questions=[single_question])
+    CreateVideo(question_list.questions[0])
     return render_template("ui.html", questions=question_list.questions)
 

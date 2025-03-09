@@ -1,13 +1,12 @@
-
-
-    {% for question in questions %} 
-    <div class="question-box">
+{% for question in questions %}
+<div class="question-box">
     <h2>Question: {{ question.question_number }}</h2>
     <h4>{{ question.question_content | replace("\n", "<br/>") | safe}}</h4>
-    <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string + '.mp4') }}")>
-      Show solution
+    <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string +
+    '.mp4') }}")>
+    Show solution
     </p>
-    
+
     <!--
     <p class="page-link" onclick=createPopoutText("{{ url_for('static', filename='Solution' + loop.index|string + '.txt') }}")>
       Show solution text
@@ -16,19 +15,19 @@
     </div>-->
 
     <ul>
-      {% for topic in question.topics %}
-      <li>{{topic}}</li>
-      {% endfor %}
+        {% for topic in question.topics %}
+        <li>{{topic}}</li>
+        {% endfor %}
     </ul>
     <ul style="list-style-type:circle;">
-      {% for pageset in question.pages %}
-      <li>
-       <u>
-        <p class="page-link" onclick="scrollToPDFPage({{ pageset.start_page }})">
-          Pages {{ pageset.start_page }}-{{ pageset.end_page }}
-      </p></u>
-      </li>
-      {% endfor %}
+        {% for pageset in question.pages %}
+        <li>
+            <u>
+                <p class="page-link" onclick="scrollToPDFPage({{ pageset.start_page }})">
+                    Pages {{ pageset.start_page }}-{{ pageset.end_page }}
+                </p></u>
+        </li>
+        {% endfor %}
     </ul>
-  </div>
-  {% endfor %}
+</div>
+{% endfor %}

@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from pydantic_core import from_json
 import time
+import pymupdf
+import base64
 
 load_dotenv()
 
@@ -30,9 +32,7 @@ class QuestionList(BaseModel):
     questions: list[Question]
 
 
-def question_summary(pdf: werkzeug.datastructures.FileStorage, notes: str):
-    import pymupdf
-    import base64
+def parse_questions(pdf: werkzeug.datastructures.FileStorage):
 
     doc_gaslight = pymupdf.open("Exam questions/Question.pdf")
     page_gaslight = doc_gaslight.load_page(0)
@@ -94,7 +94,10 @@ def question_summary(pdf: werkzeug.datastructures.FileStorage, notes: str):
         if "```" not in thing:
             better += thing
             better += "\n"
+    return better
 
+
+def question_summary(better: str, notes: str):
     result = client.beta.chat.completions.parse(
         model="gpt-4o-mini",
         messages=[

@@ -2,249 +2,288 @@
 <html lang="en">
 <style>
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: -webkit-linear-gradient(#eee, #dcfffa);
-    margin: 0;
-    display: flex;
-    height: 100vh;
-    display: flex;
-    overflow: hidden;
-  }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        background: -webkit-linear-gradient(#eee, #dcfffa);
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
 
-  .page-link {
-    color: #00e;
-    text-decoration: underline;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background 0.5s ease-in-out;
-  }
+    .page-link {
+        color: #00e;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background 0.5s ease-in-out;
+    }
 
-  .page-link:hover {
-    background: rgba(0, 104, 138, 0.1);
-  }
+    .page-link:hover {
+        background: rgba(0, 104, 138, 0.1);
+    }
 </style>
 <style>
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-}
-.loader-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-.loader {
-    width: 200px;
-    height: 200px;
-    border: 20px solid #ccc;
-    border-top: 20px solid #007bff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-  @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-  }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  .question-box {
-    padding-top: 1em;
-  }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    #loader-container {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loader {
+        width: 200px;
+        height: 200px;
+        border: 20px solid #ccc;
+        border-top: 20px solid #007bff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .question-box {
+        padding-top: 1em;
+    }
 </style>
 <style>
-  body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: -webkit-linear-gradient(#eee, #dcfffa);
-      margin: 0;
-      display: flex;
-      height: 100vh;
-      display: flex;
-      overflow: hidden;
-  }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        background: -webkit-linear-gradient(#eee, #dcfffa);
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
 
-  .page-link {
-      color: #00e;
-      text-decoration: underline;
-      cursor: pointer;
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: background 0.5s ease-in-out;
-  }
+    .page-link {
+        color: #00e;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background 0.5s ease-in-out;
+    }
 
-  .page-link:hover {
-      background: rgba(0, 104, 138, 0.1);
-  }
+    .page-link:hover {
+        background: rgba(0, 104, 138, 0.1);
+    }
 </style>
 <style>
-body {
-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-background: -webkit-linear-gradient(#eee, #dcfffa);
-margin: 0;
-display: flex;
-height: 100vh;
-display: flex;
-overflow: hidden;
-}
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        background: -webkit-linear-gradient(#eee, #dcfffa);
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
 
-.page-link2 {
-background-color: #3b9aff;
-color: white;
-border: none;
-padding: 10px 20px;
-font-size: 1em;
-border-radius: 5px;
-cursor: pointer;
-transition: background 0.5s ease-in-out;
-}
+    .page-link2 {
+        background-color: #3b9aff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.5s ease-in-out;
+    }
 
-.page-link2:hover {
-background: #007bff;
-}
+    .page-link2:hover {
+        background: #007bff;
+    }
 </style>
 <style>
-body {
-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-background: -webkit-linear-gradient(#eee, #dcfffa);
-margin: 0;
-display: flex;
-height: 100vh;
-display: flex;
-overflow: hidden;
-}
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        background: -webkit-linear-gradient(#eee, #dcfffa);
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
 
-.page-link3 {
-background-color: #3b9aff;
-color: white;
-border: none;
-padding: 10px 20px;
-font-size: 1em;
-border-radius: 5px;
-cursor: pointer;
-transition: background 0.5s ease-in-out;
-}
+    .page-link3 {
+        background-color: #3b9aff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.5s ease-in-out;
+    }
 
-.page-link3:hover {
-background: #007bff;
-}
+    .page-link3:hover {
+        background: #007bff;
+    }
 </style>
 <head>
-  <meta charset="UTF-8">
-  <title>Example paper fixer</title>
+    <meta charset="UTF-8">
+    <title>Example paper fixer</title>
 </head>
 <body style="margin: 0">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs" type="module"></script>
-<iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer" frameborder="0" style="width:50%;height:100vh"></iframe>
+<iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer"
+        frameborder="0" style="width:50%;height:100vh"></iframe>
 <div style="display: inline-block; width:50%; float:right; padding-left: 5em; overflow-y: scroll; box-sizing: border-box; height:100vh;">
-  <span id="question-place"></span>
-  <!--HERE BE THE CIRCLE OF DEATH-->
-  <div class="loader-container">
-    <div class="loader"></div>
-  </div>
-  <!--HERE BE THE END OF THE CIRCLE OF DEATH. USE WISELEY-->
+    <span id="question-place"></span>
+    <!--HERE BE THE CIRCLE OF DEATH-->
+    <div id="loader-container">
+        <div class="loader"></div>
+        <p id="status"></p>
+    </div>
+    <!--HERE BE THE END OF THE CIRCLE OF DEATH. USE WISELEY-->
 
-  <div style="display: inline-block; width:17%; float:left; padding-left: 2em; overflow-y: scroll; box-sizing: border-box; height:100vh;"></div>
-    <form action="/" method="post" enctype="multipart/form-data">
-        <label for="file" style="font-size: 1.2em; font-weight: bold; display: block; margin-bottom: 0.5em; padding-top: 1em;">Choose a file:</label>
-        <input type="file" name="file" id="file" required style="margin-bottom: 1em; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;">
+    <div style="display: inline-block; width:17%; float:left; padding-left: 2em; overflow-y: scroll; box-sizing: border-box; height:100vh;"></div>
+    <form id="upload-form" enctype="multipart/form-data">
+        <label for="file"
+               style="font-size: 1.2em; font-weight: bold; display: block; margin-bottom: 0.5em; padding-top: 1em;">Choose
+            a file:</label>
+        <input type="file" name="file" id="file" required
+               style="margin-bottom: 1em; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;">
         <br><br>
         <input type="submit" value="Upload File" class="page-link2">
     </form>
-  </div>
 </div>
 <script type="text/javascript">
-  let form = document.getElementById("upload-form");
+	let form = document.getElementById("upload-form");
 
-  function generate_stuff(event) {
-    event.preventDefault()
-    fetch('/generate', {
-      method: 'POST',
-      body: new FormData(form)
-    }).then(response => response.text())
-            .then(response => {
-      console.log(response)
-      document.getElementById("question-place").innerHTML = response
-    });
-  }
-  form.addEventListener('submit', generate_stuff)
+	function generate_stuff(event) {
+		event.preventDefault()
+		document.getElementById("loader-container").style.display = "flex";
+		document.getElementById("status").innerText = "Understanding lecture notes"
+		document.getElementById("question-place").innerHTML = "";
+		fetch('/generate', {
+			method: 'POST',
+			body: new FormData(form)
+		}).then(response => {
+			  const reader = response.body.getReader();
+			  reader.read().then(function process({done, value}) {
+				  value = new TextDecoder().decode(value);
+				  console.log(value);
+				  console.log(done);
+				  var keep_processing = false;
+				  if (value.includes("###a###")) {
+					  console.log("a")
+					  document.getElementById("status").innerText = "Reading the questions"
+					  keep_processing = true;
+				  }
+				  if (value.includes("###b###")) {
+					  console.log("b")
+					  document.getElementById("status").innerText = "Solving the questions"
+					  keep_processing = true;
+				  }
+				  if (keep_processing)
+					  return reader.read().then(process)
+                  else {
+						  document.getElementById("loader-container").style.display = "none";
+						  document.getElementById("question-place").innerHTML = value;
+						  MathJax.typeset();
+                  }
+              });
+          });
+	}
+
+	form.addEventListener('submit', generate_stuff)
 </script>
 <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    },
-    svg: {
-      fontCache: 'global'
-    }
-  };
+	MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']]
+		},
+		svg: {
+			fontCache: 'global'
+		}
+	};
 </script>
 <script type="text/javascript" id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 <script>
-function scrollToPDFPage(pageNumber) {
-  let viewer = document.getElementById("pdf-js-viewer").contentWindow;
-  function tryScroll() {
-      if (viewer.PDFViewerApplication && viewer.PDFViewerApplication.pdfViewer) {
-          let pdfViewer = viewer.PDFViewerApplication.pdfViewer;
-          let page = pdfViewer._pages[pageNumber]; 
+	function scrollToPDFPage(pageNumber) {
+		let viewer = document.getElementById("pdf-js-viewer").contentWindow;
 
-          if (page) {
-              pdfViewer.container.scrollTo({
-                  top: page.div.offsetTop +2, 
-                  behavior: "smooth"
-              });
-          }
-      } else {
-          setTimeout(tryScroll, 500);
-      }
-  }
-  tryScroll();
-}
+		function tryScroll() {
+			if (viewer.PDFViewerApplication && viewer.PDFViewerApplication.pdfViewer) {
+				let pdfViewer = viewer.PDFViewerApplication.pdfViewer;
+				let page = pdfViewer._pages[pageNumber];
+
+				if (page) {
+					pdfViewer.container.scrollTo({
+						top: page.div.offsetTop + 2,
+						behavior: "smooth"
+					});
+				}
+			} else {
+				setTimeout(tryScroll, 500);
+			}
+		}
+
+		tryScroll();
+	}
 </script>
 <script>
-function createVideoElement(videoUrl) {
-  let video = document.createElement('video');
-  video.width = 320;
-  video.height = 240;
-  video.controls = true;
+	function createVideoElement(videoUrl) {
+		let video = document.createElement('video');
+		video.width = 320;
+		video.height = 240;
+		video.controls = true;
 
-  let source = document.createElement('source');
-  source.src = videoUrl;
-  source.type = 'video/mp4';
+		let source = document.createElement('source');
+		source.src = videoUrl;
+		source.type = 'video/mp4';
 
-  video.appendChild(source);
+		video.appendChild(source);
 
-  document.body.appendChild(video);
-}
+		document.body.appendChild(video);
+	}
 </script>
 <script>
-function createPopoutVideo(videoUrl) {
-let width = 600;
-let height = 450;
-let left = (window.screen.width - width) / 2;
-let top = (window.screen.height - height) / 2;
+	function createPopoutVideo(videoUrl) {
+		let width = 600;
+		let height = 450;
+		let left = (window.screen.width - width) / 2;
+		let top = (window.screen.height - height) / 2;
 
-let popout = window.open("", "VideoPlayer", `width=${width},height=${height},top=${top},left=${left}`);
-if (!popout) {
-    alert("Pop-up blocked! Please allow pop-ups for this site.");
-    return;
-}
+		let popout = window.open("", "VideoPlayer", `width=${width},height=${height},top=${top},left=${left}`);
+		if (!popout) {
+			alert("Pop-up blocked! Please allow pop-ups for this site.");
+			return;
+		}
 
-popout.document.write(`
+		popout.document.write(`
     <html>
     <head>
         <title>Video Player</title>
@@ -257,7 +296,7 @@ popout.document.write(`
     </body>
     </html>
 `);
-}
+	}
 </script>
 </body>
 </html>

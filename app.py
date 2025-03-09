@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response, stream_with_context
 import chatgpt
 from manimGenerator import CreateVideo
 import summarize
@@ -13,16 +13,22 @@ def hello_world():
 
 @app.route("/generate", methods=["POST"])
 def generate():
-    single_question = chatgpt.Question(
-        question_number="Upload an example paper",
-        question_content="",
-        topics=[],
-        pages=[]  # Assuming no PageSection instances for this example
-    )
-    notes_summary = summarize.main("static/L24fullnotesp2.pdf")
-    question_list = chatgpt.QuestionList(questions=[single_question])
-    if request.method == "POST":
-        print(request.files)
-        question_list = chatgpt.question_summary(request.files["file"], notes_summary)
-        CreateVideo(question_list.questions[0].question_content)
-    return render_template("ui.html", questions=question_list.questions)
+    @stream_with_context
+    def generate():
+        single_question = chatgpt.Question(
+            question_number="Upload an example paper",
+            question_content="",
+            topics=[],
+            pages=[]  # Assuming no PageSection instances for this example
+        )
+        notes_summary = summarize.main("static/L24fullnotesp2.pdf")
+        yield "###a###"
+        question_list = chatgpt.QuestionList(questions=[single_question])
+        if request.method == "POST":
+            print(request.files)
+            q = chatgpt.parse_questions(request.files["file"])
+            yield "###b###"
+            question_list = chatgpt.question_summary(q, notes_summary)
+            #CreateVideo(question_list.questions[0].question_content)
+        yield render_template("ui.html", questions=question_list.questions)
+    return Response(generate())

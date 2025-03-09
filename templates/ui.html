@@ -1,25 +1,27 @@
 {% for question in questions %}
 <div class="question-box">
     <h2>Question: {{ question.question_number }}</h2>
-    <h4>{{ question.question_content | replace("\n", "<br/>") | safe}}</h4>
+    <h3>{{ question.question_content | replace("\n", "<br/>") | safe}}</h3>
     <p id="solution-{{ loop.index }}" class="page-link grey-link">
     Show solution
         <img style="display: none" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="console.log('a');fetch('/video', {method: 'POST',headers: {'Content-Type': 'application/json'}, body: JSON.stringify({'text': '{{ question.question_content }}', 'num': {{loop.index}} }), }).then(response => { if (!response.ok) { document.getElementById('solution-{{loop.index}}').classList.remove('grey-link'); document.getElementById('solution-{{loop.index}}').classList.add('red-link'); return; } document.getElementById('solution-{{loop.index}}').addEventListener('click', () => { createPopoutVideo('/static/Solution{{loop.index}}.mp4') }); document.getElementById('solution-{{loop.index}}').classList.remove('grey-link'); })"/>
     </p>
-
     <!--
     <p class="page-link" onclick=createPopoutText("{{ url_for('static', filename='Solution' + loop.index|string + '.txt') }}")>
       Show solution text
     </p><div class="loader-container">
         <div class="loader"></div>
     </div>-->
-
-    <ul>
+    <h2><br>Topics</h2>
+    <p><br></p>
+    <ul style = "margin-left: 20px;">
         {% for topic in question.topics %}
-        <li>{{topic}}</li>
+        <DL><DD><li>{{topic}}</li></DD></DL>
         {% endfor %}
     </ul>
-    <ul style="list-style-type:circle;">
+    <br><br>
+    <OL>
+    <UL style="list-style-type:circle; margin-left: 30px">
         {% for pageset in question.pages %}
         <li>
             <u>
@@ -28,6 +30,18 @@
                 </p></u>
         </li>
         {% endfor %}
-    </ul>
+      
+      </UL>
+    </OL>
+    <br>
+    <ul style="margin-left: 10px;">
+
+
+    <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string +
+    '.mp4') }}")>
+    Show solution
+    </p>
+  </ul>
+   
 </div>
 {% endfor %}

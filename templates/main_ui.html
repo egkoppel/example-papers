@@ -33,6 +33,10 @@
     .page-link:hover {
         background: rgba(0, 104, 138, 0.1);
     }
+
+    .loader-container > p {
+      font-family: 'Times New Roman', Times, serif;
+    }
 </style>
 <style>
     * {
@@ -51,30 +55,84 @@
 
     #loader-container {
         display: none;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
         height: 100%;
+        font-size: 100em;
     }
+   
 
-    .loader {
-        width: 200px;
-        height: 200px;
-        border: 20px solid #ccc;
-        border-top: 20px solid #007bff;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
 
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
 
+    #status {
+    text-align: center;
+    margin-top: 10em;
+    font-size: 30px;
+}
+
+.loader {
+  color: #000000;
+  font-size: 30px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  animation: mulShdSpin 1.3s infinite linear;
+  transform: translateZ(0);
+}
+
+@keyframes mulShdSpin {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 
+    2em -2em 0 0em, 3em 0 0 -1em, 
+    2em 2em 0 -1em, 0 3em 0 -1em, 
+    -2em 2em 0 -1em, -3em 0 0 -1em, 
+    -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
+    3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
+    -2em 2em 0 -1em, -3em 0 0 -1em, 
+    -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 
+    2em -2em 0 0, 3em 0 0 0.2em, 
+    2em 2em 0 0, 0 3em 0 -1em, 
+    -2em 2em 0 -1em, -3em 0 0 -1em, 
+    -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+     3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
+     -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+     3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
+     -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+     3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
+     -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
+    3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+    -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
+    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+    -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+  
     .question-box {
         padding-top: 1em;
     }
@@ -173,7 +231,7 @@
         <p id="status"></p>
     </div>
     <!--HERE BE THE END OF THE CIRCLE OF DEATH. USE WISELEY-->
-
+</div>
     <div style="display: inline-block; width:17%; float:left; padding-left: 2em; overflow-y: scroll; box-sizing: border-box; height:100vh;"></div>
     <form id="upload-form" enctype="multipart/form-data">
         <label for="file"
@@ -181,7 +239,6 @@
             a file:</label>
         <input type="file" name="file" id="file" required
                style="margin-bottom: 1em; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;">
-        <br><br>
         <input type="submit" value="Upload File" class="page-link2">
     </form>
 </div>
@@ -190,7 +247,8 @@
 
 	function generate_stuff(event) {
 		event.preventDefault()
-		document.getElementById("loader-container").style.display = "flex";
+    document.getElementById("loader-container").style.display = "flex";
+
 		document.getElementById("status").innerText = "Understanding lecture notes"
 		document.getElementById("question-place").innerHTML = "";
 		fetch('/generate', {
@@ -205,12 +263,12 @@
 				  var keep_processing = false;
 				  if (value.includes("###a###")) {
 					  console.log("a")
-					  document.getElementById("status").innerText = "Reading the questions"
+					  document.getElementById("status").innerText = "\n Reading the questions"
 					  keep_processing = true;
 				  }
 				  if (value.includes("###b###")) {
 					  console.log("b")
-					  document.getElementById("status").innerText = "Solving the questions"
+					  document.getElementById("status").innerText = "\n Solving the questions"
 					  keep_processing = true;
 				  }
 				  if (keep_processing)
@@ -223,7 +281,6 @@
               });
           });
 	}
-
 	form.addEventListener('submit', generate_stuff)
 </script>
 <script>

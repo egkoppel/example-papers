@@ -21,7 +21,7 @@
         {% for pageset in question.pages %}
         <li>
             <u>
-                <p class="page-link" onclick="scrollToPDFPage({{ pageset.start_page }})">
+                <p class="page-link" onclick="scrollToPDFPage({{ pageset.start_page }} + 2)">
                     Pages {{ pageset.start_page }}-{{ pageset.end_page }}
                 </p></u>
         </li>

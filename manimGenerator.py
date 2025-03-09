@@ -61,4 +61,4 @@ def CreateVideo(question: str, num: int):
     shutil.copy2(f"media/videos/Solution{num}/480p15/Solution{num}.mp4", f"static/Solution{num}.mp4")
 
 if __name__ == "__main__":
-    CreateVideo("Differentiate x^x")
+    CreateVideo("Differentiate x^x", 1)

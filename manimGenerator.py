@@ -12,13 +12,6 @@ def CreateVideo(question: str):
     client = OpenAI()
     LATEXBOT_ID = "asst_rqBGl40is1vvTGDITlkYcYZ6"
     MANIMBOT_ID = "asst_SQWSv3E3jCTnDFNAUx4cvndw"
-
-    # Create an assistant and threadÛ
-    # assistant = client.beta.assistants.create(
-    #     name="Larry",
-    #     model="gpt-4o",
-    #     instructions=MAIN_INSTRUCTIONS,
-    # )
     thread = client.beta.threads.create()
 
 
@@ -48,26 +41,11 @@ def CreateVideo(question: str):
         return latest_message.content[0].text.value
 
     latex_solution = send_prompt(question, LATEXBOT_ID)
-    print(latex_solution)
     manimCode = send_prompt(latex_solution, MANIMBOT_ID)
 
     with open("Solution.py", "w") as f:
         txtManimCode = manimCode.replace('```', '').replace('python', '')
         f.write(txtManimCode)
-
-    # """
-    # from manim import *
-
-    # class Solution(Scene):
-    #     def construct(self):
-    # """
-    #     )
-    #     for part in solution_parts.split("/"):
-    #         print("Processing part:", part)
-    #         manimPart = send_prompt(part)
-    #         manimPart = manimPart.replace('```', '').replace('python', '').replace('from manim import *', '')
-    #         for line in manimPart.split("\n"):
-    #             f.write("        " + line + "\n")
 
     subprocess.run(['manim', '-ql', 'Solution.py', 'Solution'])
     shutil.copy2("media/videos/Solution/480p15/Solution.mp4", f"static/Solution{questionNum}.mp4")

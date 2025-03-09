@@ -2,3 +2,4 @@
 .env
 static/pdfjs-4
 __pycache__
+media

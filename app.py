@@ -29,6 +29,6 @@ def generate():
             q = chatgpt.parse_questions(request.files["file"])
             yield "###b###"
             question_list = chatgpt.question_summary(q, notes_summary)
-            #CreateVideo(question_list.questions[0].question_content)
+            CreateVideo(question_list.questions[0].question_content)
         yield render_template("ui.html", questions=question_list.questions)
     return Response(generate())

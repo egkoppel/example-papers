@@ -2,9 +2,9 @@
 <div class="question-box">
     <h2>Question: {{ question.question_number }}</h2>
     <h4>{{ question.question_content | replace("\n", "<br/>") | safe}}</h4>
-    <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string +
-    '.mp4') }}")>
+    <p class="page-link ">
     Show solution
+        <img style="display: none" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="console.log('a');fetch('/video', {method: 'POST',headers: {'Content-Type': 'application/json'}, body: JSON.stringify({'text': '{{ question.question_content }}', 'num': {{loop.counter}} }), }).then(response => { if (!response.ok) { document.getElementById('solution-{{loop.counter}}').classList.remove('grey-link'); document.getElementById('solution-{{loop.counter}}').classList.add('red-link'); return; } document.getElementById('solution-{{loop.counter}}').addEventListener('click', () => { createPopoutVideo('/static/Solution{{loop.counter}}.mp4') }); document.getElementById('solution-{{loop.counter}}').classList.remove('grey-link'); })"/>
     </p>
 
     <!--

@@ -99,17 +99,33 @@ def parse_questions(pdf: werkzeug.datastructures.FileStorage):
 
 
 def question_summary(better: str, notes: str):
+    resulta = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "developer",
+                "content": "You are a helpful assistant who is being asked by a lecturer to create a brief summary of how students should solve questions. You will be given a list of questions, and for each one should output a list of the steps you would use to solve it, but prefix each question with the question number and question content."
+            },
+            {
+                "role": "user",
+                "content": f"""Here is the first set of questions:
+{better}"""
+            },
+        ],
+        temperature=0.01,
+    ).choices[0].message.content
+    print(resulta)
     result = client.beta.chat.completions.parse(
         model="gpt-4o-mini",
         messages=[
             {
                 "role": "developer",
-                "content": "You are a helpful assistant who is being asked by a lecturer to create a list of where students should look in the lecture notes when they get stuck on a question. When asked, please provide the question number and content copied from the question list, as well as a summary of the topics and the relevant page numbers in the notes. Ensure you use newlines."
+                "content": "You are a helpful assistant who is being asked by a lecturer to create a list of where students should look in the lecture notes when they get stuck on a question. The lecturer will give you a summary of how to solve each question. Please provide in response the question number and content copied from the question list (including any LaTeX content), as well as a summary of the topics invloved in solving it and only relevant page numbers in the notes. Ensure you use newlines."
             },
             {
                 "role": "user",
                 "content": f"""Here is the first set of questions:
-{better}
+{resulta}
 
 And the content of the lecture notes - they are provided with sets of pages delimited by ======N====== where N is a page, or ======N-M====== where N-M is an INCLUSIVE range of pages:
 {notes}"""

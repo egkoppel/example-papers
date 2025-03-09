@@ -52,7 +52,7 @@ def parse_questions(pdf: werkzeug.datastructures.FileStorage):
             messages=[
                 {
                     "role": "developer",
-                    "content": "You are a helpful assistant who has been tasked with converting scans of old paper questions into modern digital LaTeX versions of the questions. When asked, please only provide the content of each page, and do not include any messages before or after the content. You will be given a series of images by the user and should return LaTeX text. Ensure any LaTeX is surrounded by $latex$ and NEVER \\(latex\\)"
+                    "content": "You are a helpful assistant who has been tasked with converting scans of old paper questions into modern digital LaTeX versions of the questions. When asked, please only provide the content of each page, and do not include any messages before or after the content. You will be given a series of images by the user and should return LaTeX text. Ensure ALL math is surrounded by $latex$."
                 },
                 {
                     "role": "user",

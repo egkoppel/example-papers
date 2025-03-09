@@ -3,79 +3,65 @@ from manim import *
 
 class Solution(Scene):
     def construct(self):
-        # Step 1
-        step1 = MathTex(r"\text{Identify the integrating factor:}").to_edge(UP)
-        eq1 = MathTex(r"\mu(x) = e^{\int k \, dx} = e^{kx}").move_to(ORIGIN)
-        
-        self.play(Write(step1))
-        self.play(Write(eq1))
+        # Section 1: Find (∂a/∂b)_c
+        description1 = MathTex(r"\text{Find } \left( \frac{\partial a}{\partial b} \right)_c").to_edge(UP)
+        eq1_1 = MathTex(r"a = \frac{bc(b^2 - c^2)}{(b^2 + c^2)^2}").move_to(ORIGIN)
+        eq1_2 = MathTex(r"\frac{\partial a}{\partial b} = \frac{\partial}{\partial b} \left( \frac{bc(b^2 - c^2)}{(b^2 + c^2)^2} \right)").move_to(ORIGIN)
+        eq1_3 = MathTex(r"\frac{\partial a}{\partial b} = \frac{(b^2 + c^2)^2 \cdot c(3b^2 - c^2) - bc(b^2 - c^2) \cdot 4b(b^2 + c^2)}{(b^2 + c^2)^4}").move_to(ORIGIN)
+
+        self.play(Write(description1))
+        self.play(Write(eq1_1))
         self.wait(2)
-        
-        # Step 2
-        step2 = MathTex(r"\text{Multiply the entire differential equation by the integrating factor:}").to_edge(UP)
-        eq2 = MathTex(r"e^{kx} \frac{dy}{dx} + e^{kx} ky = e^{kx} a \sin(mx)").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq1, eq2), ReplacementTransform(step1, step2))
+        self.play(ReplacementTransform(eq1_1, eq1_2))
         self.wait(2)
-        
-        # Step 3
-        step3 = MathTex(r"\text{Recognize the left side as the derivative of a product:}").to_edge(UP)
-        eq3 = MathTex(r"\frac{d}{dx}(e^{kx} y) = e^{kx} a \sin(mx)").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq2, eq3), ReplacementTransform(step2, step3))
+        self.play(ReplacementTransform(eq1_2, eq1_3))
         self.wait(2)
-        
-        # Step 4
-        step4 = MathTex(r"\text{Integrate both sides with respect to } x:").to_edge(UP)
-        eq4 = MathTex(r"e^{kx} y = \int e^{kx} a \sin(mx) \, dx").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq3, eq4), ReplacementTransform(step3, step4))
+        self.play(FadeOut(eq1_3, description1))
+
+        # Section 2: Find (∂b/∂c)_a
+        description2 = MathTex(r"\text{Find } \left( \frac{\partial b}{\partial c} \right)_a").to_edge(UP)
+        eq2_1 = MathTex(r"a(b^2 + c^2)^2 = bc(b^2 - c^2)").move_to(ORIGIN)
+        eq2_2 = MathTex(r"4ac(b^2 + c^2) = b(b^2 - 3c^2)").move_to(ORIGIN)
+        eq2_3 = MathTex(r"\frac{\partial b}{\partial c} = \frac{4ac(b^2 + c^2)}{b(b^2 - 3c^2)}").move_to(ORIGIN)
+
+        self.play(Write(description2))
+        self.play(Write(eq2_1))
         self.wait(2)
-        
-        # Step 5
-        step5 = MathTex(r"\text{Solve the integral on the right side using integration by parts:}").to_edge(UP)
-        eq5 = MathTex(r"\int e^{kx} a \sin(mx) \, dx = \frac{a}{m^2 + k^2} \left( m e^{kx} \cos(mx) - k e^{kx} \sin(mx) \right) + C").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq4, eq5), ReplacementTransform(step4, step5))
+        self.play(ReplacementTransform(eq2_1, eq2_2))
         self.wait(2)
-        
-        # Step 6
-        step6 = MathTex(r"\text{Substitute back:}").to_edge(UP)
-        eq6 = MathTex(r"e^{kx} y = \frac{a}{m^2 + k^2} \left( m e^{kx} \cos(mx) - k e^{kx} \sin(mx) \right) + C").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq5, eq6), ReplacementTransform(step5, step6))
+        self.play(ReplacementTransform(eq2_2, eq2_3))
         self.wait(2)
-        
-        # Step 7
-        step7 = MathTex(r"\text{Solve for } y:").to_edge(UP)
-        eq7 = MathTex(r"y = \frac{a}{m^2 + k^2} \left( m \cos(mx) - k \sin(mx) \right) + Ce^{-kx}").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq6, eq7), ReplacementTransform(step6, step7))
+        self.play(FadeOut(eq2_3, description2))
+
+        # Section 3: Find (∂c/∂a)_b
+        description3 = MathTex(r"\text{Find } \left( \frac{\partial c}{\partial a} \right)_b").to_edge(UP)
+        eq3_1 = MathTex(r"a(b^2 + c^2)^2 = bc(b^2 - c^2)").move_to(ORIGIN)
+        eq3_2 = MathTex(r"(b^2 + c^2)^2 = 0").move_to(ORIGIN)
+        eq3_3 = MathTex(r"\frac{\partial c}{\partial a} = \frac{(b^2 + c^2)^2}{bc(b^2 - c^2)}").move_to(ORIGIN)
+
+        self.play(Write(description3))
+        self.play(Write(eq3_1))
         self.wait(2)
-        
-        # Step 8
-        step8 = MathTex(r"\text{Apply the boundary condition } y = 1 \text{ when } x = 0:").to_edge(UP)
-        eq8 = MathTex(r"1 = \frac{a}{m^2 + k^2} \left( m \cdot 1 - k \cdot 0 \right) + C \cdot 1").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq7, eq8), ReplacementTransform(step7, step8))
+        self.play(ReplacementTransform(eq3_1, eq3_2))
         self.wait(2)
-        
-        # Step 9
-        step9 = MathTex(r"\text{Solve for } C:").to_edge(UP)
-        eq9 = MathTex(r"1 = \frac{am}{m^2 + k^2} + C").move_to(ORIGIN)
-        eq10 = MathTex(r"C = 1 - \frac{am}{m^2 + k^2}").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq8, eq9), ReplacementTransform(step8, step9))
+        self.play(ReplacementTransform(eq3_2, eq3_3))
         self.wait(2)
-        self.play(ReplacementTransform(eq9, eq10))
+        self.play(FadeOut(eq3_3, description3))
+
+        # Section 4: Multiply the partial derivatives
+        description4 = MathTex(r"\text{Multiply the partial derivatives}").to_edge(UP)
+        eq4_1 = MathTex(r"\left( \frac{\partial a}{\partial b} \right)_c \left( \frac{\partial b}{\partial c} \right)_a \left( \frac{\partial c}{\partial a} \right)_b").move_to(ORIGIN)
+        eq4_2 = MathTex(r"= \left( \frac{(b^2 + c^2)^2 \cdot c(3b^2 - c^2) - bc(b^2 - c^2) \cdot 4b(b^2 + c^2)}{(b^2 + c^2)^4} \right)").move_to(ORIGIN)
+        eq4_3 = MathTex(r"\cdot \left( \frac{4ac(b^2 + c^2)}{b(b^2 - 3c^2)} \right) \cdot \left( \frac{(b^2 + c^2)^2}{bc(b^2 - c^2)} \right)").move_to(ORIGIN)
+        eq4_4 = MathTex(r"= -1").move_to(ORIGIN)
+
+        self.play(Write(description4))
+        self.play(Write(eq4_1))
         self.wait(2)
-        
-        # Step 10
-        step10 = MathTex(r"\text{Substitute } C \text{ back into the solution:}").to_edge(UP)
-        eq11 = MathTex(r"y = \frac{a}{m^2 + k^2} \left( m \cos(mx) - k \sin(mx) \right) + \left(1 - \frac{am}{m^2 + k^2}\right) e^{-kx}").move_to(ORIGIN)
-        
-        self.play(ReplacementTransform(eq10, eq11), ReplacementTransform(step9, step10))
+        self.play(ReplacementTransform(eq4_1, eq4_2))
         self.wait(2)
-        
-        # Fade out
-        self.play(FadeOut(eq11), FadeOut(step10))
+        self.play(ReplacementTransform(eq4_2, eq4_3))
+        self.wait(2)
+        self.play(ReplacementTransform(eq4_3, eq4_4))
+        self.wait(2)
+        self.play(FadeOut(eq4_4, description4))

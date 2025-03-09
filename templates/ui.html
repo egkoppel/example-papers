@@ -1,15 +1,20 @@
 
-    {% for question in questions %}
 
-    <h2>Question{{loop.index}}: {{ question.question_number }}</h2>
-    <h4>{{ question.question_content | replace("\n", "<br/>") |safe }}</h4>
+    {% for question in questions %} 
+    <div class="question-box">
+    <h2>Question: {{ question.question_number }}</h2>
+    <h4>{{ question.question_content | replace("\n", "<br/>") | safe}}</h4>
     <p class="page-link" onclick=createPopoutVideo("{{ url_for('static', filename='Solution' + loop.index|string + '.mp4') }}")>
       Show solution
     </p>
+    
+    <!--
+    <p class="page-link" onclick=createPopoutText("{{ url_for('static', filename='Solution' + loop.index|string + '.txt') }}")>
+      Show solution text
+    </p><div class="loader-container">
+        <div class="loader"></div>
+    </div>-->
 
-  <!--<p class="page-link" onclick=createVideoElement("{{url_for('static', filename='soppypoffy.mp4')}}")>
-      after start???
-  </p>-->
     <ul>
       {% for topic in question.topics %}
       <li>{{topic}}</li>
@@ -25,4 +30,5 @@
       </li>
       {% endfor %}
     </ul>
-    {% endfor %}
+  </div>
+  {% endfor %}

@@ -1,6 +1,8 @@
 /api_key
 .env
-static
+static/Solution1.mp4
+static/Solution2.mp4
+static/Solution3.mp4
 __pycache__
 media
 Solution1.py

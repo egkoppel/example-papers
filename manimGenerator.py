@@ -74,3 +74,5 @@ def CreateVideo(question: str):
     questionNum += 1
 
 questionNum = 1
+if __name__ == "__main__":
+    CreateVideo()

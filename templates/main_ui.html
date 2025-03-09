@@ -22,14 +22,6 @@
         transition: background 0.5s ease-in-out;
     }
 
-    .page-link.grey-link {
-        color: #8a8686 !important;
-    }
-
-    .page-link.red-link {
-        color: #ff2929 !important;
-    }
-
     .page-link:hover {
         background: rgba(0, 104, 138, 0.1);
     }
@@ -224,23 +216,24 @@
 <iframe id="pdf-js-viewer" src="/static/pdfjs-4/web/viewer.html?file=/static/L24fullnotesp2.pdf" title="webviewer"
         frameborder="0" style="width:50%;height:100vh"></iframe>
 <div style="display: inline-block; width:50%; float:right; padding-left: 5em; overflow-y: scroll; box-sizing: border-box; height:100vh;">
-    <span id="question-place"></span>
+  <form id="upload-form" enctype="multipart/form-data">
+    <label for="file"
+           style="font-size: 1.2em; font-weight: bold; display: block; margin-bottom: 0.5em; padding-top: 1em;">Choose
+        a file:</label>
+    <input type="file" name="file" id="file" required
+           style="margin-bottom: 1em; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;">
+    <input type="submit" value="Upload File" class="page-link2">
+</form>  
+  
+  <span id="question-place"></span>
     <!--HERE BE THE CIRCLE OF DEATH-->
     <div id="loader-container">
         <div class="loader"></div>
         <p id="status"></p>
     </div>
     <!--HERE BE THE END OF THE CIRCLE OF DEATH. USE WISELEY-->
-</div>
-    <div style="display: inline-block; width:17%; float:left; padding-left: 2em; overflow-y: scroll; box-sizing: border-box; height:100vh;"></div>
-    <form id="upload-form" enctype="multipart/form-data">
-        <label for="file"
-               style="font-size: 1.2em; font-weight: bold; display: block; margin-bottom: 0.5em; padding-top: 1em;">Choose
-            a file:</label>
-        <input type="file" name="file" id="file" required
-               style="margin-bottom: 1em; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;">
-        <input type="submit" value="Upload File" class="page-link2">
-    </form>
+
+
 </div>
 <script type="text/javascript">
 	let form = document.getElementById("upload-form");

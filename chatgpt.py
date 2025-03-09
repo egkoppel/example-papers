@@ -67,11 +67,11 @@ def parse_questions(pdf: werkzeug.datastructures.FileStorage):
                     "role": "assistant",
                     "content": """13Z
 
-(a) Solve the equation \\(\\frac{dy}{dx} = \\frac{y^2 + xy}{x^2}\\). [6]
+(a) Solve the equation $\\frac{dy}{dx} = \\frac{y^2 + xy}{x^2}$. [6]
 
-(b) Show that \\((x + y)dx + x dy\\) is an exact differential, and use this to obtain the general solution of \\(\\frac{dy}{dx} + x + y = 0\\). [7]
+(b) Show that $(x + y)dx + x dy$ is an exact differential, and use this to obtain the general solution of $\\frac{dy}{dx} + x + y = 0$. [7]
 
-(c) Solve the equation \\(\\frac{dy}{dx} + ky = a \\sin mx\\) subject to the boundary condition \\(y = 1\\) when \\(x = 0\\), where \\(k, m\\) and \\(a\\) are real, non-zero, constants. [7]"""
+(c) Solve the equation $\\frac{dy}{dx} + ky = a \\sin mx$ subject to the boundary condition $y = 1$ when $x = 0$, where $k, m$ and $a$ are real, non-zero, constants. [7]"""
                 },
                 {
                     "role": "user",

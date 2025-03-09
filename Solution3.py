@@ -3,65 +3,68 @@ from manim import *
 
 class Solution(Scene):
     def construct(self):
-        # Section 1: Find (∂a/∂b)_c
-        description1 = MathTex(r"\text{Find } \left( \frac{\partial a}{\partial b} \right)_c").to_edge(UP)
-        eq1_1 = MathTex(r"a = \frac{bc(b^2 - c^2)}{(b^2 + c^2)^2}").move_to(ORIGIN)
-        eq1_2 = MathTex(r"\frac{\partial a}{\partial b} = \frac{\partial}{\partial b} \left( \frac{bc(b^2 - c^2)}{(b^2 + c^2)^2} \right)").move_to(ORIGIN)
-        eq1_3 = MathTex(r"\frac{\partial a}{\partial b} = \frac{(b^2 + c^2)^2 \cdot c(3b^2 - c^2) - bc(b^2 - c^2) \cdot 4b(b^2 + c^2)}{(b^2 + c^2)^4}").move_to(ORIGIN)
+        # Step 1: Introduce change of variables
+        step1 = MathTex(r"\text{Introduce change of variables: } v = x + y + 1").to_edge(UP).scale(0.75)
+        eq1 = MathTex(r"y = v - x - 1").move_to(ORIGIN).scale(0.75)
+        self.play(Write(step1))
+        self.play(Write(eq1))
+        self.wait(2)
 
-        self.play(Write(description1))
-        self.play(Write(eq1_1))
+        # Step 2: Derivative transformation
+        step2 = MathTex(r"\text{Derivative transformation: } \frac{dy}{dx} = \frac{dv}{dx} - 1").to_edge(UP).scale(0.75)
+        eq2 = MathTex(r"\frac{dy}{dx} = \frac{dv}{dx} - 1").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq1, eq2))
+        self.play(ReplacementTransform(step1, step2))
         self.wait(2)
-        self.play(ReplacementTransform(eq1_1, eq1_2))
-        self.wait(2)
-        self.play(ReplacementTransform(eq1_2, eq1_3))
-        self.wait(2)
-        self.play(FadeOut(eq1_3, description1))
 
-        # Section 2: Find (∂b/∂c)_a
-        description2 = MathTex(r"\text{Find } \left( \frac{\partial b}{\partial c} \right)_a").to_edge(UP)
-        eq2_1 = MathTex(r"a(b^2 + c^2)^2 = bc(b^2 - c^2)").move_to(ORIGIN)
-        eq2_2 = MathTex(r"4ac(b^2 + c^2) = b(b^2 - 3c^2)").move_to(ORIGIN)
-        eq2_3 = MathTex(r"\frac{\partial b}{\partial c} = \frac{4ac(b^2 + c^2)}{b(b^2 - 3c^2)}").move_to(ORIGIN)
+        # Step 3: Substitute into original equation
+        step3 = MathTex(r"\text{Substitute into original equation: }").to_edge(UP).scale(0.75)
+        eq3 = MathTex(r"v^2 \left(\frac{dv}{dx} - 1\right) + v^2 + x^3 = 0").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq2, eq3))
+        self.play(ReplacementTransform(step2, step3))
+        self.wait(2)
 
-        self.play(Write(description2))
-        self.play(Write(eq2_1))
+        # Step 4: Simplify the equation
+        step4 = MathTex(r"\text{Simplify the equation: }").to_edge(UP).scale(0.75)
+        eq4 = MathTex(r"v^2 \frac{dv}{dx} + x^3 = 0").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq3, eq4))
+        self.play(ReplacementTransform(step3, step4))
         self.wait(2)
-        self.play(ReplacementTransform(eq2_1, eq2_2))
-        self.wait(2)
-        self.play(ReplacementTransform(eq2_2, eq2_3))
-        self.wait(2)
-        self.play(FadeOut(eq2_3, description2))
 
-        # Section 3: Find (∂c/∂a)_b
-        description3 = MathTex(r"\text{Find } \left( \frac{\partial c}{\partial a} \right)_b").to_edge(UP)
-        eq3_1 = MathTex(r"a(b^2 + c^2)^2 = bc(b^2 - c^2)").move_to(ORIGIN)
-        eq3_2 = MathTex(r"(b^2 + c^2)^2 = 0").move_to(ORIGIN)
-        eq3_3 = MathTex(r"\frac{\partial c}{\partial a} = \frac{(b^2 + c^2)^2}{bc(b^2 - c^2)}").move_to(ORIGIN)
+        # Step 5: Separate the variables
+        step5 = MathTex(r"\text{Separate the variables: }").to_edge(UP).scale(0.75)
+        eq5 = MathTex(r"v^2 dv = -x^3 dx").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq4, eq5))
+        self.play(ReplacementTransform(step4, step5))
+        self.wait(2)
 
-        self.play(Write(description3))
-        self.play(Write(eq3_1))
+        # Step 6: Integrate both sides
+        step6 = MathTex(r"\text{Integrate both sides: }").to_edge(UP).scale(0.75)
+        eq6 = MathTex(r"\int v^2 \, dv = \int -x^3 \, dx").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq5, eq6))
+        self.play(ReplacementTransform(step5, step6))
         self.wait(2)
-        self.play(ReplacementTransform(eq3_1, eq3_2))
-        self.wait(2)
-        self.play(ReplacementTransform(eq3_2, eq3_3))
-        self.wait(2)
-        self.play(FadeOut(eq3_3, description3))
 
-        # Section 4: Multiply the partial derivatives
-        description4 = MathTex(r"\text{Multiply the partial derivatives}").to_edge(UP)
-        eq4_1 = MathTex(r"\left( \frac{\partial a}{\partial b} \right)_c \left( \frac{\partial b}{\partial c} \right)_a \left( \frac{\partial c}{\partial a} \right)_b").move_to(ORIGIN)
-        eq4_2 = MathTex(r"= \left( \frac{(b^2 + c^2)^2 \cdot c(3b^2 - c^2) - bc(b^2 - c^2) \cdot 4b(b^2 + c^2)}{(b^2 + c^2)^4} \right)").move_to(ORIGIN)
-        eq4_3 = MathTex(r"\cdot \left( \frac{4ac(b^2 + c^2)}{b(b^2 - 3c^2)} \right) \cdot \left( \frac{(b^2 + c^2)^2}{bc(b^2 - c^2)} \right)").move_to(ORIGIN)
-        eq4_4 = MathTex(r"= -1").move_to(ORIGIN)
+        # Step 7: Calculate the integrals
+        step7 = MathTex(r"\text{Calculate the integrals: }").to_edge(UP).scale(0.75)
+        eq7 = MathTex(r"\frac{v^3}{3} = -\frac{x^4}{4} + C").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq6, eq7))
+        self.play(ReplacementTransform(step6, step7))
+        self.wait(2)
 
-        self.play(Write(description4))
-        self.play(Write(eq4_1))
+        # Step 8: Multiply through by 12
+        step8 = MathTex(r"\text{Multiply through by 12: }").to_edge(UP).scale(0.75)
+        eq8 = MathTex(r"4v^3 = -3x^4 + 12C").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq7, eq8))
+        self.play(ReplacementTransform(step7, step8))
         self.wait(2)
-        self.play(ReplacementTransform(eq4_1, eq4_2))
+
+        # Step 9: Substitute back
+        step9 = MathTex(r"\text{Substitute back } v = x + y + 1:").to_edge(UP).scale(0.75)
+        eq9 = MathTex(r"4(x + y + 1)^3 = -3x^4 + 12C").move_to(ORIGIN).scale(0.75)
+        self.play(ReplacementTransform(eq8, eq9))
+        self.play(ReplacementTransform(step8, step9))
         self.wait(2)
-        self.play(ReplacementTransform(eq4_2, eq4_3))
-        self.wait(2)
-        self.play(ReplacementTransform(eq4_3, eq4_4))
-        self.wait(2)
-        self.play(FadeOut(eq4_4, description4))
+
+        # Fade out everything
+        self.play(FadeOut(eq9), FadeOut(step9))

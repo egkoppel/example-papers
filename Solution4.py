@@ -4,80 +4,112 @@ from manim import *
 class Solution(Scene):
     def construct(self):
         # Step 1
-        step1 = MathTex(r"\text{Identify the integrating factor:}").to_edge(UP)
-        eq1 = MathTex(r"\mu(x) = e^{\int k \, dx} = e^{kx}").move_to(ORIGIN)
+        step1 = MathTex(r"\text{Change of Variables: Let } v = y^{-4}. \text{ Then } y = v^{-1/4}.").to_edge(UP).scale(0.75)
+        eq1 = MathTex(r"v = y^{-4}").move_to(ORIGIN).scale(0.75)
+        eq2 = MathTex(r"y = v^{-1/4}").move_to(ORIGIN).scale(0.75)
+
         self.play(Write(step1))
         self.play(Write(eq1))
         self.wait(2)
+        self.play(ReplacementTransform(eq1, eq2))
+        self.wait(2)
+        self.play(FadeOut(step1, eq2))
 
         # Step 2
-        step2 = MathTex(r"\text{Multiply the entire differential equation by the integrating factor:}").to_edge(UP)
-        eq2 = MathTex(r"e^{kx} \frac{dy}{dx} + e^{kx} ky = e^{kx} a \sin(mx)").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq1, eq2), ReplacementTransform(step1, step2))
+        step2 = MathTex(r"\text{Differentiate } v \text{ with respect to } x:").to_edge(UP).scale(0.75)
+        eq3 = MathTex(r"\frac{dv}{dx} = -4y^{-5}\frac{dy}{dx}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step2))
+        self.play(Write(eq3))
         self.wait(2)
+        self.play(FadeOut(step2, eq3))
 
         # Step 3
-        step3 = MathTex(r"\text{Recognize the left-hand side as the derivative of a product:}").to_edge(UP)
-        eq3 = MathTex(r"\frac{d}{dx}(e^{kx} y) = e^{kx} a \sin(mx)").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq2, eq3), ReplacementTransform(step2, step3))
+        step3 = MathTex(r"\text{Substitute } \frac{dy}{dx} \text{ from the original equation:}").to_edge(UP).scale(0.75)
+        eq4 = MathTex(r"\frac{dy}{dx} = y + xy^5").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step3))
+        self.play(Write(eq4))
         self.wait(2)
+        self.play(FadeOut(step3, eq4))
 
         # Step 4
-        step4 = MathTex(r"\text{Integrate both sides with respect to } x:").to_edge(UP)
-        eq4 = MathTex(r"e^{kx} y = \int e^{kx} a \sin(mx) \, dx").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq3, eq4), ReplacementTransform(step3, step4))
+        step4 = MathTex(r"\text{Substitute } y = v^{-1/4} \text{ and } \frac{dy}{dx} \text{ into the equation:}").to_edge(UP).scale(0.75)
+        eq5 = MathTex(r"-\frac{1}{4}v^{-5/4}\frac{dv}{dx} = v^{-1/4} + x").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step4))
+        self.play(Write(eq5))
         self.wait(2)
+        self.play(FadeOut(step4, eq5))
 
         # Step 5
-        step5 = MathTex(r"\text{Solve the integral on the right-hand side using integration by parts:}").to_edge(UP)
-        eq5 = MathTex(r"\int e^{kx} a \sin(mx) \, dx = -\frac{a}{m} e^{kx} \cos(mx) - \int -\frac{a}{m} \cos(mx) ke^{kx} \, dx").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq4, eq5), ReplacementTransform(step4, step5))
+        step5 = MathTex(r"\text{Multiply through by } -4v^{5/4}:").to_edge(UP).scale(0.75)
+        eq6 = MathTex(r"\frac{dv}{dx} = -4v + 4xv^{5/4}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step5))
+        self.play(Write(eq6))
         self.wait(2)
+        self.play(FadeOut(step5, eq6))
 
         # Step 6
-        step6 = MathTex(r"\text{Solve the remaining integral:}").to_edge(UP)
-        eq6 = MathTex(r"\int e^{kx} \cos(mx) \, dx = \frac{e^{kx}(k \cos(mx) + m \sin(mx))}{k^2 + m^2}").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq5, eq6), ReplacementTransform(step5, step6))
+        step6 = MathTex(r"\text{Rearrange to form a linear differential equation:}").to_edge(UP).scale(0.75)
+        eq7 = MathTex(r"\frac{dv}{dx} + 4v = 4xv^{5/4}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step6))
+        self.play(Write(eq7))
         self.wait(2)
+        self.play(FadeOut(step6, eq7))
 
         # Step 7
-        step7 = MathTex(r"\text{Substitute back:}").to_edge(UP)
-        eq7 = MathTex(r"e^{kx} y = -\frac{a}{m} e^{kx} \cos(mx) + \frac{a}{k^2 + m^2} e^{kx} (k \cos(mx) + m \sin(mx)) + C").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq6, eq7), ReplacementTransform(step6, step7))
+        step7 = MathTex(r"\text{Integrating Factor:}").to_edge(UP).scale(0.75)
+        eq8 = MathTex(r"e^{\int 4 \, dx} = e^{4x}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step7))
+        self.play(Write(eq8))
         self.wait(2)
+        self.play(FadeOut(step7, eq8))
 
         # Step 8
-        step8 = MathTex(r"\text{Simplify:}").to_edge(UP)
-        eq8 = MathTex(r"e^{kx} y = \frac{a}{k^2 + m^2} e^{kx} (k \cos(mx) + m \sin(mx)) + C").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq7, eq8), ReplacementTransform(step7, step8))
+        step8 = MathTex(r"\text{Multiply through by the integrating factor:}").to_edge(UP).scale(0.75)
+        eq9 = MathTex(r"e^{4x}\frac{dv}{dx} + 4e^{4x}v = 4xe^{4x}v^{5/4}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step8))
+        self.play(Write(eq9))
         self.wait(2)
+        self.play(FadeOut(step8, eq9))
 
         # Step 9
-        step9 = MathTex(r"\text{Solve for } y:").to_edge(UP)
-        eq9 = MathTex(r"y = \frac{a}{k^2 + m^2} (k \cos(mx) + m \sin(mx)) + Ce^{-kx}").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq8, eq9), ReplacementTransform(step8, step9))
+        step9 = MathTex(r"\text{Left side becomes the derivative of a product:}").to_edge(UP).scale(0.75)
+        eq10 = MathTex(r"\frac{d}{dx}(e^{4x}v) = 4xe^{4x}v^{5/4}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step9))
+        self.play(Write(eq10))
         self.wait(2)
+        self.play(FadeOut(step9, eq10))
 
         # Step 10
-        step10 = MathTex(r"\text{Apply the boundary condition } y(0) = 1:").to_edge(UP)
-        eq10 = MathTex(r"1 = \frac{a}{k^2 + m^2} (k \cdot 1 + m \cdot 0) + C").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq9, eq10), ReplacementTransform(step9, step10))
+        step10 = MathTex(r"\text{Integrate both sides:}").to_edge(UP).scale(0.75)
+        eq11 = MathTex(r"e^{4x}v = \int 4xe^{4x}v^{5/4} \, dx").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step10))
+        self.play(Write(eq11))
         self.wait(2)
+        self.play(FadeOut(step10, eq11))
 
         # Step 11
-        step11 = MathTex(r"\text{Solve for } C:").to_edge(UP)
-        eq11 = MathTex(r"1 = \frac{ak}{k^2 + m^2} + C").move_to(ORIGIN)
-        eq11_2 = MathTex(r"C = 1 - \frac{ak}{k^2 + m^2}").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq10, eq11), ReplacementTransform(step10, step11))
+        step11 = MathTex(r"\text{Solve the integral:}").to_edge(UP).scale(0.75)
+        eq12 = MathTex(r"\text{This integral is complex and requires substitution or numerical methods.}").move_to(ORIGIN).scale(0.75)
+
+        self.play(Write(step11))
+        self.play(Write(eq12))
         self.wait(2)
-        self.play(ReplacementTransform(eq11, eq11_2))
-        self.wait(2)
+        self.play(FadeOut(step11, eq12))
 
         # Step 12
-        step12 = MathTex(r"\text{Substitute } C \text{ back into the solution:}").to_edge(UP)
-        eq12 = MathTex(r"y = \frac{a}{k^2 + m^2} (k \cos(mx) + m \sin(mx)) + \left(1 - \frac{ak}{k^2 + m^2}\right) e^{-kx}").move_to(ORIGIN)
-        self.play(ReplacementTransform(eq11_2, eq12), ReplacementTransform(step11, step12))
-        self.wait(2)
+        step12 = MathTex(r"\text{Back-substitute } v = y^{-4}:").to_edge(UP).scale(0.75)
+        eq13 = MathTex(r"\text{Once } v(x) \text{ is found, substitute back to find } y(x) = v(x)^{-1/4}.").move_to(ORIGIN).scale(0.75)
 
-        # Fade out everything
-        self.play(FadeOut(eq12), FadeOut(step12))
+        self.play(Write(step12))
+        self.play(Write(eq13))
+        self.wait(2)
+        self.play(FadeOut(step12, eq13))

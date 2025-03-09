@@ -1,5 +1,5 @@
 /api_key
 .env
-static/pdfjs-4
+static
 __pycache__
 media

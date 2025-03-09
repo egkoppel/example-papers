@@ -1,7 +1,9 @@
+import werkzeug.datastructures
 from openai import OpenAI
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from pydantic_core import from_json
+import time
 
 load_dotenv()
 
@@ -9,12 +11,14 @@ client = OpenAI()
 
 
 class PageSection(BaseModel):
+    model_config = dict(extra="forbid")
     start_page: int
     end_page: int
     file_search_citation: str
 
 
 class Question(BaseModel):
+    model_config = dict(extra="forbid")
     question_number: str
     question_content: str
     topics: list[str]
@@ -22,59 +26,98 @@ class Question(BaseModel):
 
 
 class QuestionList(BaseModel):
+    model_config = dict(extra="forbid")
     questions: list[Question]
 
 
-def question_summary():
-    assistant = client.beta.assistants.create(
-        name="Che Fixer",
-        instructions=f"You are a university tutor and have access to lecture notes through file_search. You will be given "
-                     f"questions a student is failing miserably at. You will be given text of questions, and should list "
-                     f"the relevant topics from the lecture notes as well as any relevant page numbers. Extract the "
-                     f"question content, INCLUDING ANY SUBQUESTIONS, and convert any math into LaTeX."
-                     f"You should output "
-                     f"ONLY a json file according to the following schema. ```json\n"
-                     f"{QuestionList.model_json_schema()}\n```",
-        tools=[{"type": "file_search"}],
+def question_summary(pdf: werkzeug.datastructures.FileStorage, notes: str):
+    import pymupdf
+    import base64
+
+    doc_gaslight = pymupdf.open("Exam questions/Question.pdf")
+    page_gaslight = doc_gaslight.load_page(0)
+    pix_gaslight = page_gaslight.get_pixmap(dpi=170)
+    b_gaslight = pix_gaslight.tobytes(output='jpeg')
+    base64_gaslight = base64.b64encode(b_gaslight).decode("utf-8")
+
+    question_text = ""
+    doc = pymupdf.open(stream=pdf.read(), filetype="pdf")
+    for page in doc.pages():
+        pix = page.get_pixmap(dpi=170)
+        b = pix.tobytes(output='jpeg')
+        base64_image = base64.b64encode(b).decode("utf-8")
+        text = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "developer",
+                    "content": "You are a helpful assistant who has been tasked with converting scans of old paper questions into modern digital LaTeX versions of the questions. When asked, please only provide the content of each page, and do not include any messages before or after the content. You will be given a series of images by the user and should return LaTeX text."
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{base64_gaslight}", "detail": "high"},
+                        },
+                    ],
+                },
+                {
+                    "role": "assistant",
+                    "content": """13Z
+
+(a) Solve the equation \\(\\frac{dy}{dx} = \\frac{y^2 + xy}{x^2}\\). [6]
+
+(b) Show that \\((x + y)dx + x dy\\) is an exact differential, and use this to obtain the general solution of \\(\\frac{dy}{dx} + x + y = 0\\). [7]
+
+(c) Solve the equation \\(\\frac{dy}{dx} + ky = a \\sin mx\\) subject to the boundary condition \\(y = 1\\) when \\(x = 0\\), where \\(k, m\\) and \\(a\\) are real, non-zero, constants. [7]"""
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{base64_image}", "detail": "high"},
+                        },
+                    ],
+                }
+            ],
+        ).choices[0].message.content
+        print(text)
+        question_text += text
+        question_text += "\n"
+
+    doc.close()
+
+    better = ""
+    for thing in iter(question_text.splitlines()):
+        if "```" not in thing:
+            better += thing
+            better += "\n"
+
+    result = client.beta.chat.completions.parse(
         model="gpt-4o-mini",
-    )
+        messages=[
+            {
+                "role": "developer",
+                "content": "You are a helpful assistant who is being asked by a lecturer to create a list of where students should look in the lecture notes when they get stuck on a question. When asked, please provide the question number and content copied from the question list, as well as a summary of the topics and the relevant page numbers in the notes. Ensure you use newlines."
+            },
+            {
+                "role": "user",
+                "content": f"""Here is the first set of questions:
+{better}
 
-    assistant = client.beta.assistants.update(
-        assistant_id=assistant.id,
-        tool_resources={"file_search": {"vector_store_ids": ["vs_67cc6233fb008191b683cbe63b091687"]}},
-    )
+And the content of the lecture notes - they are provided with sets of pages delimited by ======N====== where N is a page, or ======N-M====== where N-M is a range of pages:
+{notes}"""
+            },
+        ],
+        response_format=QuestionList
+    ).choices[0].message.parsed
 
-    thread = client.beta.threads.create()
+    print(repr(result))
 
-    with open("thing8.txt", "r") as f:
-        question_text = f.read()
+    return result
 
-    message = client.beta.threads.messages.create(
-        thread_id=thread.id,
-        role="user",
-        content=f"Extract the topics and page numbers for EVERY question in the following text\n\n{question_text}",
-    )
-
-    run = client.beta.threads.runs.create_and_poll(
-        thread_id=thread.id,
-        assistant_id=assistant.id,
-    )
-
-    if run.status == 'completed':
-        messages = client.beta.threads.messages.list(
-            thread_id=thread.id
-        )
-        data = messages.data[0].content[0].text.value
-        print(data)
-        data = data.split("```json\n")[1].split("\n```")[0]
-        result = QuestionList.model_validate(from_json(data))
-        print(repr(result))
-        return result
-    else:
-        print(run.status)
-        print(run.last_error)
-
-        print(run)
 
 if __name__ == "__main__":
     question_summary()

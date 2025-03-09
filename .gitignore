@@ -1,3 +1,4 @@
 /api_key
 .env
 static/pdfjs-4
+__pycache__

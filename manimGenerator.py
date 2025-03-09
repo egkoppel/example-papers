@@ -6,7 +6,7 @@ import os
 
 
 def CreateVideo(question: str):
-    global quesitonNum
+    global questionNum
 
     load_dotenv()
     client = OpenAI()
@@ -70,9 +70,9 @@ def CreateVideo(question: str):
     #             f.write("        " + line + "\n")
 
     subprocess.run(['manim', '-ql', 'Solution.py', 'Solution'])
-    shutil.move("/media/videos/Solution/480p15/Solution.mp4", f"/static/Solution{questionNum}.mp4")
+    shutil.copy2("media/videos/Solution/480p15/Solution.mp4", f"static/Solution{questionNum}.mp4")
     questionNum += 1
 
 questionNum = 1
 if __name__ == "__main__":
-    CreateVideo()
+    CreateVideo("Differentiate x^x")

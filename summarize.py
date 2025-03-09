@@ -20,6 +20,7 @@ def main(pdf_path):
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
+        temperature=0.01,
         messages=[
             {"role": "developer", "content": "You are a helpful assistant who is being asked by a lecturer to summarise their lecture notes. When asked, only provide the summary of each page, and do not include any messages before or after the content."},
             {

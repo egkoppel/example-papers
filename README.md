@@ -80,3 +80,10 @@ You solve mathmatical problems and return the raw latex code containing the solu
   <li>cd example-papers</li>
   <li>flask run</li>
 </ul>
+<h1>Usage</h1>
+<ul>
+<li>Run the flask command in project foler: flask run</li>
+<li>Open local webpage at: <a href= "http://127.0.0.1:5000">http://127.0.0.1:5000</a></li>
+<li>Upload question to webpage at upload file button. </li>
+<li>Wait for videos to render. </li>
+</ul>

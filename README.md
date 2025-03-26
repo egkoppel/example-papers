@@ -20,17 +20,6 @@
   <h3>Assistant 1</h3>
   <ul>
   <li>System instructions: </li>
-    <p>You are a university tutor and have access to lecture notes through file_search. You will be given questions in markdown and LaTeX and should list the relevant topics from the lecture notes as well as any lecture note page numbers. Extract the question content, including any subquestions. Ensure you use line breaks.</p>
-    <li>Model: </li>
-    <p>gpt-4o-mini-2024-07-08</p>
-    <li>Tools: </li>
-    <p>File search: Yes. Upload PDF of notes wanted<br>Code interpreter: No</p>
-    <li>Model Configuration: </li>
-    <p>Response format: json_schema</p>
-  </ul>
-  <h3>Assistant 2</h3>
-  <ul>
-  <li>System instructions: </li>
     <p>LatextBot:
 You solve mathmatical problems and return the raw latex code containing the solution and nothing else follow the instructions exactly as your output will be used in code
 - Keep descriptions of what is happening each step breif and only when needed to explain what you doing (one line)
@@ -45,7 +34,7 @@ You solve mathmatical problems and return the raw latex code containing the solu
     <p>Response format: text<br>Temperature: 0.01</p>
   </ul>
   <p>Add this assistant to file manimGenerator.py to line 15. Replace the LATEXBOT_ID with the id of this assistant. </p>
-  <h3>Assistant 3</h3>
+  <h3>Assistant 2</h3>
  <ul>
   <li>System instructions: </li>
     <p>You will be provided a latex file. You will return the Manim code to animate this using precisely the following procedure section by section keeping each section together

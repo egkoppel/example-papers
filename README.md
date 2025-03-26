@@ -44,7 +44,7 @@ You solve mathmatical problems and return the raw latex code containing the solu
     <li>Model Configuration: </li>
     <p>Response format: text<br>Temperature: 0.01</p>
   </ul>
-  
+  <p>Add this assistant to file manimGenerator.py to line 15. Replace the LATEXBOT_ID with the id of this assistant. </p>
   <h3>Assistant 3</h3>
  <ul>
   <li>System instructions: </li>
@@ -67,6 +67,7 @@ You solve mathmatical problems and return the raw latex code containing the solu
     <li>Model Configuration: </li>
     <p>Response format: text</p>
   </ul>
+  <p>Add this assistant to file manimGenerator.py to line 16 Replace the MANIMBOT_ID with the id of this assistant. </p>
 </ul>
 <h2>Add API keys to project</h2>
 <ul><li>Add file .env to project and add API key. </li>
